@@ -14,7 +14,6 @@ namespace soa_assign_II
         [STAThread]
         static void Main()
         {
-			//Test comment please ignore
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
