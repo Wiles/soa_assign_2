@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://footballpool.dataaccess.eu" name="Info" targetNamespace="http://footballpool.dataaccess.eu">
+	<!-- -------------------- -->
+	<!--SECTION: types-->
+	<!--
+	<!--Purpose: Defines some data types used by the web service?
+	-->
+	<types>
+		<xs:schema elementFormDefault="qualified" targetNamespace="http://footballpool.dataaccess.eu">
+			<!--ListOfCountryNamesByName-->
+			<xs:element name="ListOfCountryNamesByName">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ListOfCountryNamesByNameResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ListOfCountryNamesByNameResult" type="tns:ArrayOftCountryCodeAndName"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<!--CapitalCity-->
+			<xs:element name="CapitalCity">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="sCountryISOCode" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CapitalCityResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CapitalCityResult" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<!--ListOfCurrenciesByCode-->
+			<xs:element name="ListOfCurrenciesByCode">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ListOfCurrenciesByCodeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ListOfCurrenciesByCodeResult" type="tns:ArrayOftCurrency"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<!--CountryISOCode-->
+			<xs:element name="CountryISOCode">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="sCountryName" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</types>
+	<!-- -------------------- -->
+	<!--SECTION: unnamed-->
+	<!--
+	<!--Purpose: ???
+	-->
+	<!--ListOfCountryNamesByNameSoapRequest-->
+	<message name="ListOfCountryNamesByNameSoapRequest">
+		<part name="parameters" element="tns:ListOfCountryNamesByName"/>
+	</message>
+	<message name="ListOfCountryNamesByNameSoapResponse">
+		<part name="parameters" element="tns:ListOfCountryNamesByNameResponse"/>
+	</message>
+	<!--CapitalCitySoapRequest-->
+	<message name="CapitalCitySoapRequest">
+		<part name="parameters" element="tns:CapitalCity"/>
+	</message>
+	<message name="CapitalCitySoapResponse">
+		<part name="parameters" element="tns:CapitalCityResponse"/>
+	</message>
+	<!--ListOfCurrenciesByCodeSoapRequest-->
+	<message name="ListOfCurrenciesByCodeSoapRequest">
+		<part name="parameters" element="tns:ListOfCurrenciesByCode"/>
+	</message>
+	<message name="ListOfCurrenciesByCodeSoapResponse">
+		<part name="parameters" element="tns:ListOfCurrenciesByCodeResponse"/>
+	</message>
+	<!--CountryISOCodeSoapRequest-->
+	<message name="CountryISOCodeSoapRequest">
+		<part name="parameters" element="tns:CountryISOCode"/>
+	</message>
+	<message name="CountryISOCodeSoapResponse">
+		<part name="parameters" element="tns:CountryISOCodeResponse"/>
+	</message>
+	<!-- -------------------- -->
+	<!--SECTION: portType-->
+	<!--
+	<!--Purpose: ???
+	-->
+	<portType name="InfoSoapType">
+		<!--ListOfCountryNamesByName-->
+		<operation name="ListOfCountryNamesByName">
+			<documentation>Returns a list of all stored counties ordered by country name</documentation>
+			<input message="tns:ListOfCountryNamesByNameSoapRequest"/>
+			<output message="tns:ListOfCountryNamesByNameSoapResponse"/>
+		</operation>
+		<!--CapitalCity-->
+		<operation name="CapitalCity">
+			<documentation>Returns the  name of the captial city for the passed country code</documentation>
+			<input message="tns:CapitalCitySoapRequest"/>
+			<output message="tns:CapitalCitySoapResponse"/>
+		</operation>
+		<!--ListOfCurrenciesByCode-->
+		<operation name="ListOfCurrenciesByCode">
+			<documentation>Returns a list of currencies ordered by code.</documentation>
+			<input message="tns:ListOfCurrenciesByCodeSoapRequest"/>
+			<output message="tns:ListOfCurrenciesByCodeSoapResponse"/>
+		</operation>
+		<!--CountryISOCode-->
+		<operation name="CountryISOCode">
+			<documentation>This function tries to found a country based on the passed country name.</documentation>
+			<input message="tns:CountryISOCodeSoapRequest"/>
+			<output message="tns:CountryISOCodeSoapResponse"/>
+		</operation>
+	<!-- -------------------- -->
+	<!--SECTION: binding-->	
+	<!--
+	<!--Purpose: ???
+	-->	
+	<binding name="InfoSoapBinding" type="tns:InfoSoapType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<!--ListOfCountryNamesByName-->
+		<operation name="ListOfCountryNamesByName">
+			<soap:operation soapAction="" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+			<soap:body use="literal"/>
+			</output>
+		</operation>
+		<!--CapitalCity-->
+		<operation name="CapitalCity">
+			<soap:operation soapAction="" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<!--ListOfCurrenciesByCode-->
+		<operation name="ListOfCurrenciesByCode">
+			<soap:operation soapAction="" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<!--CountryISOCode-->
+		<operation name="CountryISOCode">
+			<soap:operation soapAction="" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<!-- -------------------- -->
+	<!--SECTION: ???-->	
+	<!--
+	<!--Purpose: ???
+	-->
+	<service name="Info">
+		<documentation>This Visual DataFlex Web Service exposes functions for the current football pool</documentation>
+		<port name="InfoSoap" binding="tns:InfoSoapBinding">
+			<soap:address location="http://footballpool.dataaccess.eu/data/info.wso"/>
+		</port>
+	</service>
+</definitions>
