@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Xml;
-using System.Xml.Serialization;
+using System.IO;
 
 namespace soa_assign_II
 {
@@ -17,12 +17,38 @@ namespace soa_assign_II
     {
         public mainForm()
         {
+            ParseXML();
             InitializeComponent();
 
-            XmlSerializer serializer = new XmlSerializer(typeof(services));
-            services resultingMessage = (services)serializer.Deserialize(new StreamReader(xmlPath));
 
-            Services = resultingMessage.Items;
+
+        }
+
+        private void ParseXML(string path = @"..\..\xml\config.xml")
+        {
+            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+            XmlReader reader = XmlReader.Create(fs);
+
+            while (reader.Read())
+            {
+                switch (reader.NodeType)
+                {
+                    case XmlNodeType.Element:
+                        switch (reader.Name)
+                        {
+                            case "service":
+                                continue;
+                            case "method":
+                                continue;
+                            case "parameter":
+                                continue;
+                            default: continue;
+                        }
+                    default: continue;
+                }
+            }
+
+
 
         }
 
