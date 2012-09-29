@@ -14,7 +14,6 @@
 				<method_description>Returns an array with the id, name, country and flag reference of all players</method_description>
 				<request>
 					<paramter name="bSelected" type="boolean" />
-
 				</request>
 				<response>
 					<list name="tPlayerNames">

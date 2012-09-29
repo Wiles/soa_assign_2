@@ -61,7 +61,7 @@ namespace soa_assign_II
             if (methods.ContainsKey((string)cmboBoxMethodList.SelectedItem)) {
                 foreach ( configurationServicesServiceMethodParamter parameter in methods[(string)cmboBoxMethodList.SelectedItem].request) {
                     Label l = new Label();
-                    l.Text = parameter.name;
+                    l.Text = parameter.name + " - " + parameter.type;
                     parameterPanel.Controls.Add(l);
                     TextBox t = new TextBox();
                     t.Width = parameterPanel.Width;
@@ -69,6 +69,26 @@ namespace soa_assign_II
                     paramters.Add(parameter, t);
                 }
             }
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            configurationServicesService currentService = services[(string)cmboBoxServiceList.SelectedItem];
+            configurationServicesServiceMethod currentMethod = methods[(string)cmboBoxMethodList.SelectedItem];
+            Dictionary<configurationServicesServiceMethodParamter, string> currentParameters = new Dictionary<configurationServicesServiceMethodParamter, string> ();
+
+
+            foreach (configurationServicesServiceMethodParamter parameter in methods[(string)cmboBoxMethodList.SelectedItem].request)
+            {
+                currentParameters.Add(parameter, paramters[parameter].Text);
+                
+            }
+
+            //TODO validate parameters gainst their types
+            //TODO build soap request
+            //TODO send request
+            //TODO parse response
+
         }
     }
 }

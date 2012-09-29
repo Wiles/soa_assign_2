@@ -34,12 +34,13 @@
             this.cmboBoxMethodList = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.parameterPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmboBoxServiceList
             // 
             this.cmboBoxServiceList.FormattingEnabled = true;
-            this.cmboBoxServiceList.Location = new System.Drawing.Point(12, 69);
+            this.cmboBoxServiceList.Location = new System.Drawing.Point(12, 50);
             this.cmboBoxServiceList.Name = "cmboBoxServiceList";
             this.cmboBoxServiceList.Size = new System.Drawing.Size(217, 21);
             this.cmboBoxServiceList.TabIndex = 0;
@@ -48,7 +49,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 53);
+            this.label1.Location = new System.Drawing.Point(13, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(216, 13);
             this.label1.TabIndex = 1;
@@ -57,9 +58,9 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 13);
+            this.label2.Location = new System.Drawing.Point(13, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(639, 40);
+            this.label2.Size = new System.Drawing.Size(639, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Service Exposer";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -67,7 +68,7 @@
             // cmboBoxMethodList
             // 
             this.cmboBoxMethodList.FormattingEnabled = true;
-            this.cmboBoxMethodList.Location = new System.Drawing.Point(12, 113);
+            this.cmboBoxMethodList.Location = new System.Drawing.Point(12, 94);
             this.cmboBoxMethodList.Name = "cmboBoxMethodList";
             this.cmboBoxMethodList.Size = new System.Drawing.Size(217, 21);
             this.cmboBoxMethodList.TabIndex = 3;
@@ -76,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 97);
+            this.label3.Location = new System.Drawing.Point(12, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(216, 13);
             this.label3.TabIndex = 4;
@@ -84,10 +85,20 @@
             // 
             // parameterPanel
             // 
-            this.parameterPanel.Location = new System.Drawing.Point(12, 140);
+            this.parameterPanel.Location = new System.Drawing.Point(12, 121);
             this.parameterPanel.Name = "parameterPanel";
-            this.parameterPanel.Size = new System.Drawing.Size(216, 373);
+            this.parameterPanel.Size = new System.Drawing.Size(216, 363);
             this.parameterPanel.TabIndex = 6;
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(12, 490);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(216, 23);
+            this.btnSubmit.TabIndex = 7;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // mainForm
             // 
@@ -95,12 +106,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(664, 525);
+            this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.parameterPanel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmboBoxMethodList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmboBoxServiceList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "mainForm";
             this.Text = "Service Exposer";
             this.ResumeLayout(false);
@@ -116,5 +131,6 @@
         private System.Windows.Forms.ComboBox cmboBoxMethodList;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel parameterPanel;
+        private System.Windows.Forms.Button btnSubmit;
     }
 }
