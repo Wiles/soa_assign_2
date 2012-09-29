@@ -16,6 +16,9 @@ namespace soa_assign_II
 {
     public partial class mainForm : Form
     {
+        private Dictionary<string, configurationServicesService> services = new Dictionary<string, configurationServicesService>();
+        private Dictionary<string, configurationServicesServiceMethod> methods = new Dictionary<string, configurationServicesServiceMethod>();
+
         public mainForm()
         {
             String xmlPath = "C:\\Users\\samuel\\workspace\\soa_assign_2\\xml\\config.xml";
@@ -24,22 +27,24 @@ namespace soa_assign_II
             XmlSerializer serializer = new XmlSerializer(typeof(configuration));
             configuration resultingMessage = (configuration)serializer.Deserialize(new StreamReader(xmlPath));
 
-            object[] services = resultingMessage.Items;
+            foreach( configurationServicesService service in  resultingMessage.Items[0].service)
+            {
+                cmboBoxServiceList.Items.Add(service.name);
+                services.Add(service.name, service);
+            }
 
         }
 
         private void cmboBoxServiceList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            XmlDocument configFile = new XmlDocument();
-            configFile.Load(@"..\..\xml\config.xml");
-
-            XmlNodeList services = configFile.GetElementsByTagName("service");
-            foreach (XmlNode node in services)
-            {
-                XmlNodeList child = node.ChildNodes;
-                foreach (XmlNode childNode in child)
+            if(services.ContainsKey((string)cmboBoxServiceList.SelectedItem)) {
+                configurationServicesService service = services[(string)cmboBoxServiceList.SelectedItem];
+                cmboBoxMethodList.Items.Clear();
+                methods.Clear();
+                foreach ( configurationServicesServiceMethod method in service.method) 
                 {
-                    cmboBoxServiceList.Items.Add(childNode.Name.ToString());
+                    cmboBoxMethodList.Items.Add(method.method_name);
+                    methods.Add(method.method_name, method);
                 }
             }
         }
