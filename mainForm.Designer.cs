@@ -33,6 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmboBoxMethodList = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.parameterPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // cmboBoxServiceList
@@ -70,6 +71,7 @@
             this.cmboBoxMethodList.Name = "cmboBoxMethodList";
             this.cmboBoxMethodList.Size = new System.Drawing.Size(217, 21);
             this.cmboBoxMethodList.TabIndex = 3;
+            this.cmboBoxMethodList.SelectedIndexChanged += new System.EventHandler(this.cmboBoxMethodList_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -80,12 +82,20 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Select a Method from the dropdown below...";
             // 
+            // parameterPanel
+            // 
+            this.parameterPanel.Location = new System.Drawing.Point(12, 140);
+            this.parameterPanel.Name = "parameterPanel";
+            this.parameterPanel.Size = new System.Drawing.Size(216, 373);
+            this.parameterPanel.TabIndex = 6;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(664, 525);
+            this.Controls.Add(this.parameterPanel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmboBoxMethodList);
             this.Controls.Add(this.label2);
@@ -105,5 +115,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmboBoxMethodList;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.FlowLayoutPanel parameterPanel;
     }
 }

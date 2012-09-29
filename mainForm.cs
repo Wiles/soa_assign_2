@@ -18,6 +18,7 @@ namespace soa_assign_II
     {
         private Dictionary<string, configurationServicesService> services = new Dictionary<string, configurationServicesService>();
         private Dictionary<string, configurationServicesServiceMethod> methods = new Dictionary<string, configurationServicesServiceMethod>();
+        private Dictionary<configurationServicesServiceMethodParamter, TextBox> paramters = new Dictionary<configurationServicesServiceMethodParamter, TextBox>();
 
         public mainForm()
         {
@@ -37,14 +38,35 @@ namespace soa_assign_II
 
         private void cmboBoxServiceList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(services.ContainsKey((string)cmboBoxServiceList.SelectedItem)) {
+            if (services.ContainsKey((string)cmboBoxServiceList.SelectedItem))
+            {
                 configurationServicesService service = services[(string)cmboBoxServiceList.SelectedItem];
                 cmboBoxMethodList.Items.Clear();
-                methods.Clear();
-                foreach ( configurationServicesServiceMethod method in service.method) 
+                foreach (configurationServicesServiceMethod method in service.method)
                 {
                     cmboBoxMethodList.Items.Add(method.method_name);
                     methods.Add(method.method_name, method);
+                }
+            }
+            else
+            {
+                methods.Clear();
+            }
+
+        }
+
+        private void cmboBoxMethodList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            parameterPanel.Controls.Clear();
+            if (methods.ContainsKey((string)cmboBoxMethodList.SelectedItem)) {
+                foreach ( configurationServicesServiceMethodParamter parameter in methods[(string)cmboBoxMethodList.SelectedItem].request) {
+                    Label l = new Label();
+                    l.Text = parameter.name;
+                    parameterPanel.Controls.Add(l);
+                    TextBox t = new TextBox();
+                    t.Width = parameterPanel.Width;
+                    parameterPanel.Controls.Add(t);
+                    paramters.Add(parameter, t);
                 }
             }
         }
