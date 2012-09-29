@@ -55,7 +55,6 @@
     <Compile Include="SoapRequest.cs" />
     <Compile Include="xml\config.cs">
       <DependentUpon>config.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="xml\config.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -83,16 +82,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="xml\config.xsc">
-      <DependentUpon>config.xsd</DependentUpon>
-    </None>
     <None Include="xml\config.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>config.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="xml\config.xss">
-      <DependentUpon>config.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

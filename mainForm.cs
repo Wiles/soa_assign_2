@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 using System.Xml;
 using System.Xml.Serialization;
@@ -17,12 +18,13 @@ namespace soa_assign_II
     {
         public mainForm()
         {
+            String xmlPath = "C:\\Users\\samuel\\workspace\\soa_assign_2\\xml\\config.xml";
             InitializeComponent();
 
-            XmlSerializer serializer = new XmlSerializer(typeof(services));
-            services resultingMessage = (services)serializer.Deserialize(new StreamReader(xmlPath));
+            XmlSerializer serializer = new XmlSerializer(typeof(configuration));
+            configuration resultingMessage = (configuration)serializer.Deserialize(new StreamReader(xmlPath));
 
-            Services = resultingMessage.Items;
+            object[] services = resultingMessage.Items;
 
         }
 

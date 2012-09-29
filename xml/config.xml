@@ -1,278 +1,185 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-	<configuration>
-		<services>
-			<service>
-				<name serviceID="0">Worldcup 2010 Football Championship</name>
-				<service_URL>http://footballpool.dataaccess.eu/data/info.wso</service_URL>
-				<info_URL>http://footballpool.dataaccess.eu</info_URL>
-				<wsdl_URL>http://footballpool.dataaccess.eu/data/info.wso?WSDL</wsdl_URL>
-				<xmlns_tns>http://footballpool.dataaccess.eu</xmlns_tns>
-				<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
-				<methods>
-					<method>
-						<method_name>tns:AllPlayerNames</method_name>
-						<method_description>Returns an array with the id, name, country and flag reference of all players</method_description>
-						<request>
-							<parameters>
-								<parameter>
-									<name>tns:bSelected</name>
-									<parameter_description>No Clue.</parameter_description>
-									<type>bool</type>
-									<default>0</default>
-								</parameter>
-							</parameters>
-						</request>
-						<response>
-							<tPlayerNames>
-									<iId></iId>
-									<sName></sName>
-									<sCountryName></sCountryName>
-									<sCountryFlag></sCountryFlag>
-									<sCountryFlagLarge></sCountryFlagLarge>
-							</tPlayerNames>
-						</response>
-					</method>
-					<method>
-						<method_name>tns:TopSelectedGoalScorers</method_name>
-						<method_description>Returns an array with the top N selected goal scorers and how often they are selected. Pass 0 as TopN and you get them all.</method_description>
-						<request>
-							<parameters>
-								<parameter>
-									<name>tns:iTopN</name>
-									<parameter_description>The number of players you want to see. Pass 0 for all of them.</parameter_description>
-									<type>int</type>
-									<default>0</default>
-								</parameter>
-							</parameters>
-						</request>
-						<response>
-							<tTopSelectedGoalScorer>
-								<sName></sName>
-								<iSelected></iSelected>
-								<Countries>
-									<tCountrySelectedTopScorer>
-										<sName></sName>
-										<iCount></iCount>
-									</tCountrySelectedTopScorer>
-								</Countries>
-							</tTopSelectedGoalScorer>
-						</response>
-					</method>
-					<method>
-						<method_name>tns:StadiumNames</method_name>
-						<method_description>Returns an array of stadium names where the games are played.</method_description>
-						<request>
-							<parameters>
-							</parameters>
-						</request>
-						<response>
-								<string></string>
-						</response>
-					</method>
-					<method>
-						<method_name>tns:StadiumInfo</method_name>
-						<method_description>Returns the information we keep about a particular stadium, Pass the name of the stadium.</method_description>
-						<request>
-							<parameters>
-								<parameter>
-									<name>tns:sStadiumName</name>
-									<parameter_description>The stadium name.</parameter_description>
-									<type>string</type>
-									<default></default>
-								</parameter>
-							</parameters>
-						</request>
-						<response>
-							<StadiumNamesResult>
-								<string>Arena Lviv</string>
-								<string>Donbas Arena</string>
-								<string>Metalist stadium</string>
-								<string>National Stadium</string>
-								<string>Olimpiysky National Sports Complex</string>
-								<string>PGE Arena</string>
-								<string>Stadium Miejski</string>
-								<string>Stadium Miejski</string>
-							</StadiumNamesResult>
-						</response>
-					</method>
-					<method>
-						<method_name>tns:Teams</method_name>
-						<method_description>Returns an array of all teams that compete with a link to the picture of their flag.</method_description>
-						<request>
-							<parameters>
-							</parameters>
-						</request>
-						<response>
-							<tTeamInfo>
-								<iId></iId>
-								<sName></sName>
-								<sCountryFlag></sCountryFlag>
-								<sWikipediaURL></sWikipediaURL>
-								<sCountryFlagLarge></sCountryFlagLarge>
-							</tTeamInfo>
-						</response>
-					</method>
-				</methods>
-			</service>
-			<service>
-				<name serviceID="1">CountryInfoService</name>
-				<service_URL>http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso</service_URL>
-				<info_URL>http://www.oorsprong.org</info_URL>
-				<wsdl_URL>http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL</wsdl_URL>
-				<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
-				<methods>
-					<method>
-						<method_name>tns:ListOfCountryNamesByName</method_name>
-						<method_description>Returns a list of all stored counties ordered by country name</method_description>
-						<request>
-							<parameters>
-							</parameters>
-						</request>
-						<response>
-							<tCountryCodeAndName>
-								<sISOCode></sISOCode>
-								<sName></sName>
-							</tCountryCodeAndName>
-						</response>
-					</method>
-					<method>
-						<method_name>tns:CapitalCity</method_name>
-						<method_description>Returns the name of the captial city for the passed country code</method_description>
-						<request>
-							<parameters>
-								<parameter>
-									<name>tns:sCountryISOCode</name>
-									<parameter_description>The ISO country code.</parameter_description>
-									<type>string</type>
-									<default></default>
-								</parameter>
-							</parameters>
-						</request>
-						<response>
-							<CapitalCityResult></CapitalCityResult>
-						</response>
-					</method>
-					<method>
-						<method_name>tns:ListOfCurrenciesByCode</method_name>
-						<method_description>Returns a list of currencies ordered by code.</method_description>
-						<request>
-							<parameters>
-							</parameters>
-						</request>
-						<response>
-							<tCurrency>
-								<sISOCode/>
-								<sName></sName>
-							</tCurrency>
-						</response>
-					</method>
-					<method>
-						<method_name>tns:CountryISOCode</method_name>
-						<method_description>This function tries to found a country based on the passed country name.</method_description>
-						<request>
-							<parameters>
-								<parameter>
-									<name>tns:sCountryName</name>
-									<parameter_description>The name of the country.</parameter_description>
-									<type>string</type>
-									<default></default>
-								</parameter>
-							</parameters>
-						</request>
-						<response>
-							<CountryISOCodeResult></CountryISOCodeResult>
-						</response>
-					</method>
-				</methods>
-			</service>
-			<service  serviceID="2">
-				<name>NumberConversion</name>
-				<service_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso</service_URL>
-				<info_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso</info_URL>
-				<wsdl_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL</wsdl_URL>
-				<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
-				<methods>
-					<method>
-						<method_name>tns:NumberToWords</method_name>
-						<method_description>Returns the word corresponding to the positive number passed as parameter. Limited to quadrillions.</method_description>
-						<request>
-							<parameters>
-								<parameter>
-									<name>tns:ubiNum</name>
-									<parameter_description>The number to convert.</parameter_description>
-									<type>int</type>
-									<default>0</default>
-								</parameter>
-							</parameters>
-						</request>
-						<response>
-							<NumberToWordsResult></NumberToWordsResult>
-						</response>
-					</method>
-					<method>
-						<method_name>tns:NumberToDollars</method_name>
-						<method_description>Returns the non-zero dollar amount of the passed number.</method_description>
-						<request>
-							<parameters>
-								<parameter>
-									<name>tns:dNum</name>
-									<parameter_description>The number to convert.</parameter_description>
-									<type>int</type>
-									<default>0</default>
-								</parameter>
-							</parameters>
-						</request>
-						<response>
-							<NumberToDollarsResult></NumberToDollarsResult>
-						</response>
-					</method>
-				</methods>
-			</service>
-			<service serviceID="3">
-				<name>Cesar Cipher/Decipher</name>
-				<service_URL>http://www.quisque.com/fr/chasses/crypto/cesar.asmx</service_URL>
-				<info_URL>http://www.quisque.com</info_URL>
-				<wsdl_URL>http://www.quisque.com/fr/chasses/crypto/cesar.asmx?WSDL</wsdl_URL>
-				<service_description>Cesar Cipher/Decipher</service_description>
-				<methods>
-					<method>
-						<method_name>tns:CipherAll</method_name>
-						<method_description>Cipher a string using Cesar cipher with all alphabet decalage.</method_description>
-						<request>
-							<parameters>
-								<parameter>
-									<name>tns:text</name>
-									<parameter_description>The text to chipher.</parameter_description>
-									<type>string</type>
-									<default></default>
-								</parameter>
-							</parameters>
-						</request>
-						<response>
-							<CipherAllResult><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/></CipherAllResult>
-						</response>
-					</method>
-					<method>
-						<method_name>tns:DecipherAll</method_name>
-						<method_description>Decipher a string using Cesar cipher with all alphabet decalage.</method_description>
-						<request>
-							<parameters>
-								<parameter>
-									<name>tns:text</name>
-									<parameter_description>The text to decipher.</parameter_description>
-									<type>string</type>
-									<default></default>
-								</parameter>
-							</parameters>
-						</request>
-						<response>
-							<DecipherAllResult><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/><string/></DecipherAllResult>
-						</response>
-					</method>
-				</methods>
-			</service>
-		</services>
-	</configuration>
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<services>
+		<service serviceID="0">
+			<name>Worldcup 2010 Football Championship</name>
+			<service_URL>http://footballpool.dataaccess.eu/data/info.wso</service_URL>
+			<info_URL>http://footballpool.dataaccess.eu</info_URL>
+			<wsdl_URL>http://footballpool.dataaccess.eu/data/info.wso?WSDL</wsdl_URL>
+			<xmlns_tns>http://footballpool.dataaccess.eu</xmlns_tns>
+			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
+
+			<method>
+				<method_name>AllPlayerNames</method_name>
+				<method_description>Returns an array with the id, name, country and flag reference of all players</method_description>
+				<request>
+					<paramter name="bSelected" type="boolean" />
+
+				</request>
+				<response>
+					<list name="tPlayerNames">
+						<item name="iId" type="int"/>
+						<item name="sName" type="string"/>
+						<item name="sCountryName" type="string"/>
+						<item name="sCountryFlag" type="string"/>
+						<item name="sCountryFlagLarge" type="string"/>
+					</list>
+				</response>
+			</method>
+			<method>
+				<method_name>TopSelectedGoalScorers</method_name>
+				<method_description>Returns an array with the top N selected goal scorers and how often they are selected. Pass 0 as TopN and you get them all.</method_description>
+				<request>
+
+					<paramter name="iTopN" type="int"/>
+
+				</request>
+				<response>
+				</response>
+			</method>
+			<method>
+				<method_name>StadiumNames</method_name>
+				<method_description>Returns an array of stadium names where the games are played.</method_description>
+				<request>
+
+					<paramter name="sStadiumName" type="string" />
+
+				</request>
+				<response>
+				</response>
+			</method>
+			<method>
+				<method_name>StadiumInfo</method_name>
+				<method_description>Returns the information we keep about a particular stadium, Pass the name of the stadium.</method_description>
+				<request>
+
+					<paramter name="sStadiumName" type="string"/>
+
+				</request>
+				<response/>
+			</method>
+			<method>
+				<method_name>Teams</method_name>
+				<method_description>Returns an array of all teams that compete with a link to the picture of their flag.</method_description>
+				<request>
+
+
+				</request>
+				<response/>
+			</method>
+
+		</service>
+		<service serviceID="1">
+			<name>CountryInfoService</name>
+			<service_URL>http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso</service_URL>
+			<info_URL>http://www.oorsprong.org</info_URL>
+			<wsdl_URL>http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL</wsdl_URL>
+			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
+
+			<method>
+				<method_name>ListOfCountryNamesByName</method_name>
+				<method_description>Returns a list of all stored counties ordered by country name</method_description>
+				<request>
+
+
+				</request>
+				<response/>
+			</method>
+			<method>
+				<method_name>CapitalCity</method_name>
+				<method_description>Returns the name of the captial city for the passed country code</method_description>
+				<request>
+
+					<paramter name="sCountryISOCode" type="string"/>
+
+				</request>
+				<response>
+				</response>
+			</method>
+			<method>
+				<method_name>ListOfCurrenciesByCode</method_name>
+				<method_description>Returns a list of currencies ordered by code.</method_description>
+				<request>
+
+
+				</request>
+				<response/>
+			</method>
+			<method>
+				<method_name>CountryISOCode</method_name>
+				<method_description>This function tries to found a country based on the passed country name.</method_description>
+				<request>
+
+					<paramter name="sCountryName" type="string"/>
+
+				</request>
+				<response>
+				</response>
+			</method>
+
+		</service>
+		<service  serviceID="2">
+			<name>NumberConversion</name>
+			<service_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso</service_URL>
+			<info_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso</info_URL>
+			<wsdl_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL</wsdl_URL>
+			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
+
+			<method>
+				<method_name>NumberToWords</method_name>
+				<method_description>Returns the word corresponding to the positive number passed as parameter. Limited to quadrillions.</method_description>
+				<request>
+
+					<paramter name="ubiNum" type="int"/>
+
+				</request>
+				<response>
+				</response>
+			</method>
+			<method>
+				<method_name>NumberToDollars</method_name>
+				<method_description>Returns the non-zero dollar amount of the passed number.</method_description>
+				<request>
+
+					<paramter name="dNum" type="int"/>
+
+				</request>
+				<response>
+				</response>
+			</method>
+
+		</service>
+		<service serviceID="3">
+			<name>Cesar Cipher/Decipher</name>
+			<service_URL>http://www.quisque.com/fr/chasses/crypto/cesar.asmx</service_URL>
+			<info_URL>http://www.quisque.com</info_URL>
+			<wsdl_URL>http://www.quisque.com/fr/chasses/crypto/cesar.asmx?WSDL</wsdl_URL>
+			<service_description>Cesar Cipher/Decipher</service_description>
+
+			<method>
+				<method_name>CipherAll</method_name>
+				<method_description>Cipher a string using Cesar cipher with all alphabet decalage.</method_description>
+				<request>
+
+					<paramter name="text" type="string"/>
+
+				</request>
+				<response/>
+			</method>
+			<method>
+				<method_name>DecipherAll</method_name>
+				<method_description>Decipher a string using Cesar cipher with all alphabet decalage.</method_description>
+				<request>
+
+					<paramter name="text" type="string"/>
+
+				</request>
+				<response/>
+			</method>
+
+		</service>
+	</services>
+</configuration>
 <!--Football : http://www.soapclient.com/soapclient?template=%2Fclientform.html&fn=soapform&SoapTemplate=%2FSoapResult.html&SoapWSDL=http%3A%2F%2Ffootballpool.dataaccess.eu%2Fdata%2Finfo.wso%3FWSDL&_ArraySize=2-->
 <!--CountryInfo : http://www.soapclient.com/soapclient?template=%2Fclientform.html&fn=soapform&SoapTemplate=%2FSoapResult.html&SoapWSDL=http%3A%2F%2Fwebservices.oorsprong.org%2Fwebsamples.countryinfo%2FCountryInfoService.wso%3FWSDL&_ArraySize=2-->
 <!--NumberConversion : http://www.soapclient.com/soapclient?template=%2Fclientform.html&fn=soapform&SoapTemplate=%2FSoapResult.html&SoapWSDL=http%3A%2F%2Fwww.dataaccess.com%2Fwebservicesserver%2Fnumberconversion.wso%3FWSDL&_ArraySize=2-->
