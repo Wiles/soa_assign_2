@@ -1,153 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="configuration" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="string">
-    <xs:complexType>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="configuration" msdata:IsDataSet="true" msdata:Locale="en-US">
+  <xs:element name="configuration" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="string" />
         <xs:element name="services">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="service" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
+                    <xs:element name="name" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
                     <xs:element name="service_URL" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
                     <xs:element name="info_URL" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
                     <xs:element name="wsdl_URL" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
                     <xs:element name="xmlns_tns" type="xs:string" minOccurs="0" msdata:Ordinal="4" />
                     <xs:element name="service_description" type="xs:string" minOccurs="0" msdata:Ordinal="5" />
-                    <xs:element name="name" nillable="true" minOccurs="0" maxOccurs="unbounded">
-                      <xs:complexType>
-                        <xs:simpleContent msdata:ColumnName="name_Text" msdata:Ordinal="1">
-                          <xs:extension base="xs:string">
-                            <xs:attribute name="serviceID" type="xs:string" />
-                          </xs:extension>
-                        </xs:simpleContent>
-                      </xs:complexType>
-                    </xs:element>
-                    <xs:element name="methods" minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="method" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="method" minOccurs="0" maxOccurs="unbounded">
+                          <xs:element name="method_name" type="xs:string" minOccurs="0" />
+                          <xs:element name="method_description" type="xs:string" minOccurs="0" />
+                          <xs:element name="request" minOccurs="1" maxOccurs="1">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="method_name" type="xs:string" minOccurs="0" />
-                                <xs:element name="method_description" type="xs:string" minOccurs="0" />
-                                <xs:element name="request" minOccurs="0" maxOccurs="unbounded">
+                                <xs:element name="paramter" minOccurs="0" maxOccurs="unbounded">
                                   <xs:complexType>
-                                    <xs:sequence>
-                                      <xs:element name="parameters" minOccurs="0" maxOccurs="unbounded">
-                                        <xs:complexType>
-                                          <xs:sequence>
-                                            <xs:element name="parameter" minOccurs="0" maxOccurs="unbounded">
-                                              <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="name" type="xs:string" minOccurs="0" />
-                                                  <xs:element name="parameter_description" type="xs:string" minOccurs="0" />
-                                                  <xs:element name="type" type="xs:string" minOccurs="0" />
-                                                  <xs:element name="default" type="xs:string" minOccurs="0" />
-                                                </xs:sequence>
-                                              </xs:complexType>
-                                            </xs:element>
-                                          </xs:sequence>
-                                        </xs:complexType>
-                                      </xs:element>
-                                    </xs:sequence>
+                                    <xs:attribute name="name" type="xs:string" />
+                                    <xs:attribute name="type" type="xs:string" />
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element name="response" minOccurs="0" maxOccurs="unbounded">
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="response" minOccurs="1" maxOccurs="1">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="list" minOccurs="0" maxOccurs="unbounded">
                                   <xs:complexType>
                                     <xs:sequence>
-                                      <xs:element name="NumberToDollarsResult" type="xs:string" minOccurs="0" />
-                                      <xs:element name="NumberToWordsResult" type="xs:string" minOccurs="0" />
-                                      <xs:element name="CountryISOCodeResult" type="xs:string" minOccurs="0" />
-                                      <xs:element name="CapitalCityResult" type="xs:string" minOccurs="0" />
-                                      <xs:element name="string" type="xs:string" minOccurs="0" />
-                                      <xs:element name="DecipherAllResult" minOccurs="0" maxOccurs="unbounded">
+                                      <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
-                                          <xs:sequence>
-                                            <xs:element ref="string" minOccurs="0" maxOccurs="unbounded" />
-                                          </xs:sequence>
-                                        </xs:complexType>
-                                      </xs:element>
-                                      <xs:element name="CipherAllResult" minOccurs="0" maxOccurs="unbounded">
-                                        <xs:complexType>
-                                          <xs:sequence>
-                                            <xs:element ref="string" minOccurs="0" maxOccurs="unbounded" />
-                                          </xs:sequence>
-                                        </xs:complexType>
-                                      </xs:element>
-                                      <xs:element name="tCurrency" minOccurs="0" maxOccurs="unbounded">
-                                        <xs:complexType>
-                                          <xs:sequence>
-                                            <xs:element name="sISOCode" type="xs:string" minOccurs="0" />
-                                            <xs:element name="sName" type="xs:string" minOccurs="0" />
-                                          </xs:sequence>
-                                        </xs:complexType>
-                                      </xs:element>
-                                      <xs:element name="tCountryCodeAndName" minOccurs="0" maxOccurs="unbounded">
-                                        <xs:complexType>
-                                          <xs:sequence>
-                                            <xs:element name="sISOCode" type="xs:string" minOccurs="0" />
-                                            <xs:element name="sName" type="xs:string" minOccurs="0" />
-                                          </xs:sequence>
-                                        </xs:complexType>
-                                      </xs:element>
-                                      <xs:element name="tTeamInfo" minOccurs="0" maxOccurs="unbounded">
-                                        <xs:complexType>
-                                          <xs:sequence>
-                                            <xs:element name="iId" type="xs:string" minOccurs="0" />
-                                            <xs:element name="sName" type="xs:string" minOccurs="0" />
-                                            <xs:element name="sCountryFlag" type="xs:string" minOccurs="0" />
-                                            <xs:element name="sWikipediaURL" type="xs:string" minOccurs="0" />
-                                            <xs:element name="sCountryFlagLarge" type="xs:string" minOccurs="0" />
-                                          </xs:sequence>
-                                        </xs:complexType>
-                                      </xs:element>
-                                      <xs:element name="StadiumNamesResult" minOccurs="0" maxOccurs="unbounded">
-                                        <xs:complexType>
-                                          <xs:sequence>
-                                            <xs:element ref="string" minOccurs="0" maxOccurs="unbounded" />
-                                          </xs:sequence>
-                                        </xs:complexType>
-                                      </xs:element>
-                                      <xs:element name="tTopSelectedGoalScorer" minOccurs="0" maxOccurs="unbounded">
-                                        <xs:complexType>
-                                          <xs:sequence>
-                                            <xs:element name="sName" type="xs:string" minOccurs="0" />
-                                            <xs:element name="iSelected" type="xs:string" minOccurs="0" />
-                                            <xs:element name="Countries" minOccurs="0" maxOccurs="unbounded">
-                                              <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="tCountrySelectedTopScorer" minOccurs="0" maxOccurs="unbounded">
-                                                    <xs:complexType>
-                                                      <xs:sequence>
-                                                        <xs:element name="sName" type="xs:string" minOccurs="0" />
-                                                        <xs:element name="iCount" type="xs:string" minOccurs="0" />
-                                                      </xs:sequence>
-                                                    </xs:complexType>
-                                                  </xs:element>
-                                                </xs:sequence>
-                                              </xs:complexType>
-                                            </xs:element>
-                                          </xs:sequence>
-                                        </xs:complexType>
-                                      </xs:element>
-                                      <xs:element name="tPlayerNames" minOccurs="0" maxOccurs="unbounded">
-                                        <xs:complexType>
-                                          <xs:sequence>
-                                            <xs:element name="iId" type="xs:string" minOccurs="0" />
-                                            <xs:element name="sName" type="xs:string" minOccurs="0" />
-                                            <xs:element name="sCountryName" type="xs:string" minOccurs="0" />
-                                            <xs:element name="sCountryFlag" type="xs:string" minOccurs="0" />
-                                            <xs:element name="sCountryFlagLarge" type="xs:string" minOccurs="0" />
-                                          </xs:sequence>
+                                          <xs:attribute name="name" type="xs:string" />
+                                          <xs:attribute name="type" type="xs:string" />
                                         </xs:complexType>
                                       </xs:element>
                                     </xs:sequence>
+                                    <xs:attribute name="name" type="xs:string" />
                                   </xs:complexType>
                                 </xs:element>
                               </xs:sequence>
