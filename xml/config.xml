@@ -4,11 +4,8 @@
 		<service serviceID="0">
 			<name>Worldcup 2010 Football Championship</name>
 			<service_URL>http://footballpool.dataaccess.eu/data/info.wso</service_URL>
-			<info_URL>http://footballpool.dataaccess.eu</info_URL>
-			<wsdl_URL>http://footballpool.dataaccess.eu/data/info.wso?WSDL</wsdl_URL>
-			<xmlns_tns>http://footballpool.dataaccess.eu</xmlns_tns>
+			<target_namespace>http://footballpool.dataaccess.eu</target_namespace>
 			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
-
 			<method>
 				<method_name>AllPlayerNames</method_name>
 				<method_description>Returns an array with the id, name, country and flag reference of all players</method_description>
@@ -72,8 +69,7 @@
 		<service serviceID="1">
 			<name>CountryInfoService</name>
 			<service_URL>http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso</service_URL>
-			<info_URL>http://www.oorsprong.org</info_URL>
-			<wsdl_URL>http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL</wsdl_URL>
+			<target_namespace>http://www.oorsprong.org/websamples.countryinfo</target_namespace>
 			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
 
 			<method>
@@ -121,8 +117,7 @@
 		<service  serviceID="2">
 			<name>NumberConversion</name>
 			<service_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso</service_URL>
-			<info_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso</info_URL>
-			<wsdl_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL</wsdl_URL>
+			<target_namespace>http://www.dataaccess.com/webservicesserver</target_namespace>
 			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
 
 			<method>
@@ -152,8 +147,7 @@
 		<service serviceID="3">
 			<name>Cesar Cipher/Decipher</name>
 			<service_URL>http://www.quisque.com/fr/chasses/crypto/cesar.asmx</service_URL>
-			<info_URL>http://www.quisque.com</info_URL>
-			<wsdl_URL>http://www.quisque.com/fr/chasses/crypto/cesar.asmx?WSDL</wsdl_URL>
+			<target_namespace>http://www.quisque.com/fr/chasses/crypto/</target_namespace>
 			<service_description>Cesar Cipher/Decipher</service_description>
 
 			<method>

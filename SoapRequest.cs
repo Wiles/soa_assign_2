@@ -12,24 +12,29 @@ namespace soa_assign_II
 {
     class SoapRequest
     {
+        //The URL of the web service
         private string _url;
-        private string _action;
-        private string _soapBody;
+        private string _nameSpace;
+        //The method you want to call
+        private string _function;
+        //The parameters
+        private Dictionary<string, string> _parameters;
 
-        public SoapRequest(string URL, string action, string soapBody)
+        public SoapRequest(string URL, string nameSpace, string function, Dictionary<string, string> parameters)
         {
             this._url = URL;
-            this._action = action;
-            this._soapBody = soapBody;//lol
+            this._nameSpace = nameSpace;
+            this._function = function;
+            this._parameters = parameters;
         }
 
-        public void CallWebService()
+        public string CallWebService()
         {
             //this._url = "http://footballpool.dataaccess.eu/data/info.wso";
             //this._action = "AllPlayerNames";
 
             XmlDocument soapEnvelopeXml = CreateSoapEnvelope();
-            HttpWebRequest webRequest = CreateWebRequest(this._url, this._action);
+            HttpWebRequest webRequest = CreateWebRequest(this._url, this._function);
             InsertSoapEnvelopeIntoWebRequest(soapEnvelopeXml, webRequest);
 
             // begin async call to web request.
@@ -45,7 +50,7 @@ namespace soa_assign_II
             {
                 soapResult = rd.ReadToEnd();
             }
-            Console.Write(soapResult);
+            return soapResult;
         }
 
         private HttpWebRequest CreateWebRequest(string url, string action)
@@ -60,13 +65,24 @@ namespace soa_assign_II
 
         private XmlDocument CreateSoapEnvelope()
         {
+            //xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/1999/XMLSchema\">" +
+
+            string soapEnvelope = "";
+            soapEnvelope = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
+                "<soap:Body>" + 
+                "<" + this._function + " xmlns=\"" + this._nameSpace + "\">";
+
+            foreach (KeyValuePair<string, string> param in this._parameters)
+            {
+                soapEnvelope += "<" + param.Key + ">";
+                soapEnvelope += param.Value;
+                soapEnvelope += "</" + param.Key + ">";
+            }
+            soapEnvelope += "</" + this._function + ">";
+            soapEnvelope += "</soap:Body></soap:Envelope>";
+
             XmlDocument soapEnvelop = new XmlDocument();
-            soapEnvelop.LoadXml(@"<SOAP-ENV:Envelope xmlns:SOAP-ENV=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:xsi=""http://www.w3.org/1999/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/1999/XMLSchema""> " +
-                "<SOAP-ENV:Body>"+
-                this._soapBody +//@"<tns:AllPlayerNames xmlns:tns=""http://footballpool.dataaccess.eu""><tns:bSelected>1</tns:bSelected></tns:AllPlayerNames>"+
-                "</SOAP-ENV:Body>"+
-                "</SOAP-ENV:Envelope>"
-            );
+            soapEnvelop.LoadXml(soapEnvelope);
             return soapEnvelop;
         }
 

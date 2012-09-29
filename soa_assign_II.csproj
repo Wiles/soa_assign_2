@@ -55,11 +55,12 @@
     <Compile Include="SoapRequest.cs" />
     <Compile Include="xml\config.cs">
       <DependentUpon>config.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="xml\config.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>config.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
@@ -83,9 +84,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="xml\config.xsd">
+      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>config.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>

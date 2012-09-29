@@ -34,6 +34,9 @@
             this.cmboBoxMethodList = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.parameterPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnEngageService = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtResult = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cmboBoxServiceList
@@ -59,7 +62,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(13, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(639, 40);
+            this.label2.Size = new System.Drawing.Size(434, 40);
             this.label2.TabIndex = 2;
             this.label2.Text = "Service Exposer";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -86,15 +89,45 @@
             // 
             this.parameterPanel.Location = new System.Drawing.Point(12, 140);
             this.parameterPanel.Name = "parameterPanel";
-            this.parameterPanel.Size = new System.Drawing.Size(216, 373);
+            this.parameterPanel.Size = new System.Drawing.Size(217, 236);
             this.parameterPanel.TabIndex = 6;
+            // 
+            // btnEngageService
+            // 
+            this.btnEngageService.Location = new System.Drawing.Point(12, 390);
+            this.btnEngageService.Name = "btnEngageService";
+            this.btnEngageService.Size = new System.Drawing.Size(217, 23);
+            this.btnEngageService.TabIndex = 7;
+            this.btnEngageService.Text = "Activate Service";
+            this.btnEngageService.UseVisualStyleBackColor = true;
+            this.btnEngageService.Click += new System.EventHandler(this.btnEngageService_Click);
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(238, 121);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(209, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Result of Query:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtResult
+            // 
+            this.txtResult.Location = new System.Drawing.Point(241, 140);
+            this.txtResult.Multiline = true;
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(206, 236);
+            this.txtResult.TabIndex = 10;
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(664, 525);
+            this.ClientSize = new System.Drawing.Size(459, 425);
+            this.Controls.Add(this.txtResult);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnEngageService);
             this.Controls.Add(this.parameterPanel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmboBoxMethodList);
@@ -116,5 +149,8 @@
         private System.Windows.Forms.ComboBox cmboBoxMethodList;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel parameterPanel;
+        private System.Windows.Forms.Button btnEngageService;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtResult;
     }
 }
