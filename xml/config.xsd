@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="configuration" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="configuration" msdata:IsDataSet="true" msdata:Locale="en-US">
+  <xs:element name="configuration" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="services">
@@ -21,7 +21,7 @@
                           <xs:element name="request" minOccurs="1" maxOccurs="1">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="paramter" minOccurs="0" maxOccurs="unbounded">
+                                <xs:element name="parameter" minOccurs="0" maxOccurs="unbounded">
                                   <xs:complexType>
                                     <xs:attribute name="name" type="xs:string" />
                                     <xs:attribute name="type" type="xs:string" />
@@ -33,20 +33,14 @@
                           <xs:element name="response" minOccurs="1" maxOccurs="1">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="list" minOccurs="0" maxOccurs="unbounded">
+                                <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
                                   <xs:complexType>
-                                    <xs:sequence>
-                                      <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
-                                        <xs:complexType>
-                                          <xs:attribute name="name" type="xs:string" />
-                                          <xs:attribute name="type" type="xs:string" />
-                                        </xs:complexType>
-                                      </xs:element>
-                                    </xs:sequence>
                                     <xs:attribute name="name" type="xs:string" />
+                                    <xs:attribute name="type" type="xs:string" />
                                   </xs:complexType>
                                 </xs:element>
                               </xs:sequence>
+                              <xs:attribute name="name" type="xs:string" />
                             </xs:complexType>
                           </xs:element>
                         </xs:sequence>

@@ -10,16 +10,14 @@
 				<method_name>AllPlayerNames</method_name>
 				<method_description>Returns an array with the id, name, country and flag reference of all players</method_description>
 				<request>
-					<paramter name="bSelected" type="boolean" />
+					<parameter name="bSelected" type="boolean" />
 				</request>
-				<response>
-					<list name="tPlayerNames">
-						<item name="iId" type="int"/>
-						<item name="sName" type="string"/>
-						<item name="sCountryName" type="string"/>
-						<item name="sCountryFlag" type="string"/>
-						<item name="sCountryFlagLarge" type="string"/>
-					</list>
+				<response name ="tPlayerNames">
+					<item name="iId" type="int"/>
+					<item name="sName" type="string"/>
+					<item name="sCountryName" type="string"/>
+					<item name="sCountryFlag" type="string"/>
+					<item name="sCountryFlagLarge" type="string"/>
 				</response>
 			</method>
 			<method>
@@ -27,7 +25,7 @@
 				<method_description>Returns an array with the top N selected goal scorers and how often they are selected. Pass 0 as TopN and you get them all.</method_description>
 				<request>
 
-					<paramter name="iTopN" type="int"/>
+					<parameter name="iTopN" type="int"/>
 
 				</request>
 				<response>
@@ -38,7 +36,7 @@
 				<method_description>Returns an array of stadium names where the games are played.</method_description>
 				<request>
 
-					<paramter name="sStadiumName" type="string" />
+					<parameter name="sStadiumName" type="string" />
 
 				</request>
 				<response>
@@ -49,7 +47,7 @@
 				<method_description>Returns the information we keep about a particular stadium, Pass the name of the stadium.</method_description>
 				<request>
 
-					<paramter name="sStadiumName" type="string"/>
+					<parameter name="sStadiumName" type="string"/>
 
 				</request>
 				<response/>
@@ -85,10 +83,11 @@
 				<method_description>Returns the name of the captial city for the passed country code</method_description>
 				<request>
 
-					<paramter name="sCountryISOCode" type="string"/>
+					<parameter name="sCountryISOCode" type="string"/>
 
 				</request>
-				<response>
+				<response name="CapitalCityResponse">
+					<item name="m:CapitalCityResult" type="string"/>
 				</response>
 			</method>
 			<method>
@@ -105,7 +104,7 @@
 				<method_description>This function tries to found a country based on the passed country name.</method_description>
 				<request>
 
-					<paramter name="sCountryName" type="string"/>
+					<parameter name="sCountryName" type="string"/>
 
 				</request>
 				<response>
@@ -124,7 +123,7 @@
 				<method_description>Returns the word corresponding to the positive number passed as parameter. Limited to quadrillions.</method_description>
 				<request>
 
-					<paramter name="ubiNum" type="int"/>
+					<parameter name="ubiNum" type="int"/>
 
 				</request>
 				<response>
@@ -135,7 +134,7 @@
 				<method_description>Returns the non-zero dollar amount of the passed number.</method_description>
 				<request>
 
-					<paramter name="dNum" type="int"/>
+					<parameter name="dNum" type="int"/>
 
 				</request>
 				<response>
@@ -154,7 +153,7 @@
 				<method_description>The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number.</method_description>
 				<request>
 
-					<paramter name="sISBN" type="string"/>
+					<parameter name="sISBN" type="string"/>
 
 				</request>
 				<response/>
@@ -164,7 +163,7 @@
 				<method_description>The test is done by calculation on the first 9 digits and compare the result with the checksum number at the end. You have to pass a 10 digits number or 8 digits and an X.</method_description>
 				<request>
 
-					<paramter name="sISBN" type="string"/>
+					<parameter name="sISBN" type="string"/>
 
 				</request>
 				<response/>

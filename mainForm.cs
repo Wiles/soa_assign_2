@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Net;
+using System.Xml.Linq;
 
 using System.Xml;
 using System.Xml.Serialization;
@@ -19,7 +20,7 @@ namespace soa_assign_II
     {
         private Dictionary<string, configurationServicesService> _services = new Dictionary<string, configurationServicesService>();
         private Dictionary<string, configurationServicesServiceMethod> _methods = new Dictionary<string, configurationServicesServiceMethod>();
-        private Dictionary<configurationServicesServiceMethodParamter, TextBox> _parameters = new Dictionary<configurationServicesServiceMethodParamter, TextBox>();
+        private Dictionary<configurationServicesServiceMethodParameter, TextBox> _parameters = new Dictionary<configurationServicesServiceMethodParameter, TextBox>();
 
         public mainForm()
         {
@@ -67,7 +68,7 @@ namespace soa_assign_II
             parameterPanel.Controls.Clear();
             if (cmboBoxMethodList.SelectedItem != null && this._methods.ContainsKey((string)cmboBoxMethodList.SelectedItem)) 
             {
-                foreach (configurationServicesServiceMethodParamter parameter in this._methods[(string)cmboBoxMethodList.SelectedItem].request) 
+                foreach (configurationServicesServiceMethodParameter parameter in this._methods[(string)cmboBoxMethodList.SelectedItem].request) 
                 {
                     Label l = new Label();
                     l.Text = parameter.name;
@@ -101,7 +102,7 @@ namespace soa_assign_II
                 method = (string)cmboBoxMethodList.SelectedItem;
             }
 
-            foreach(KeyValuePair<configurationServicesServiceMethodParamter, TextBox> prms in this._parameters)
+            foreach(KeyValuePair<configurationServicesServiceMethodParameter, TextBox> prms in this._parameters)
             {
                 String tempValue = (String)prms.Value.Text;
                 String tempName = (String)prms.Value.Name;
@@ -137,6 +138,29 @@ namespace soa_assign_II
             {
                 string result = soapRequest.CallWebService();
                 txtResult.Text = result;
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(result);
+
+                XmlNodeList nodes = doc.SelectNodes("//*[local-name()='" + this._methods[(string)cmboBoxMethodList.SelectedItem].response .name + "']");
+
+                DataTable table = new DataTable();
+
+                foreach ( configurationServicesServiceMethodResponseItem prms in this._methods[(string)cmboBoxMethodList.SelectedItem].response.item)
+                {
+                    table.Columns.Add(prms.name);
+                }
+
+
+                foreach (XmlNode node in nodes)
+                {
+                    DataRow row = table.NewRow();
+                    foreach (XmlNode child in node.ChildNodes) 
+                    {
+                        row[child.Name] = child.InnerText;
+                    }
+                    table.Rows.Add(row);
+                }
+                dgvResults.DataSource = table;
             }
             catch (WebException ex)
             {
