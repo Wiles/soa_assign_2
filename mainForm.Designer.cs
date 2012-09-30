@@ -63,7 +63,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(13, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(434, 40);
+            this.label2.Size = new System.Drawing.Size(215, 40);
             this.label2.TabIndex = 2;
             this.label2.Text = "Service Exposer";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -108,7 +108,7 @@
             this.txtResult.Location = new System.Drawing.Point(241, 274);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(206, 102);
+            this.txtResult.Size = new System.Drawing.Size(598, 139);
             this.txtResult.TabIndex = 10;
             // 
             // dgvResults
@@ -116,10 +116,10 @@
             this.dgvResults.AllowUserToAddRows = false;
             this.dgvResults.AllowUserToDeleteRows = false;
             this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults.Location = new System.Drawing.Point(241, 53);
+            this.dgvResults.Location = new System.Drawing.Point(241, 13);
             this.dgvResults.Name = "dgvResults";
             this.dgvResults.ReadOnly = true;
-            this.dgvResults.Size = new System.Drawing.Size(206, 215);
+            this.dgvResults.Size = new System.Drawing.Size(598, 255);
             this.dgvResults.TabIndex = 11;
             // 
             // mainForm
@@ -127,7 +127,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(459, 425);
+            this.ClientSize = new System.Drawing.Size(851, 425);
             this.Controls.Add(this.dgvResults);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.btnEngageService);

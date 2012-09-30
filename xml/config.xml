@@ -87,7 +87,7 @@
 
 				</request>
 				<response name="CapitalCityResponse">
-					<item name="m:CapitalCityResult" type="string"/>
+					<item name="CapitalCityResult" type="string"/>
 				</response>
 			</method>
 			<method>

@@ -147,7 +147,7 @@ namespace soa_assign_II
 
                 foreach ( configurationServicesServiceMethodResponseItem prms in this._methods[(string)cmboBoxMethodList.SelectedItem].response.item)
                 {
-                    table.Columns.Add(prms.name);
+                    table.Columns.Add("m:" + prms.name);
                 }
 
 
