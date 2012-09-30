@@ -65,20 +65,18 @@ namespace soa_assign_II
 
         private XmlDocument CreateSoapEnvelope()
         {
-            //xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/1999/XMLSchema\">" +
-
             string soapEnvelope = "";
             soapEnvelope = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
-                "<soap:Body>" + 
-                "<" + this._function + " xmlns=\"" + this._nameSpace + "\">";
+                "<soap:Body>" +
+                "<" + this._function.ToString().Replace(" ", string.Empty) + " xmlns=\"" + this._nameSpace + "\">";
 
             foreach (KeyValuePair<string, string> param in this._parameters)
             {
-                soapEnvelope += "<" + param.Key + ">";
+                soapEnvelope += "<" + param.Key.ToString().Replace(" ", string.Empty) + ">";
                 soapEnvelope += param.Value;
-                soapEnvelope += "</" + param.Key + ">";
+                soapEnvelope += "</" + param.Key.ToString().Replace(" ", string.Empty) + ">";
             }
-            soapEnvelope += "</" + this._function + ">";
+            soapEnvelope += "</" + this._function.ToString().Replace(" ", string.Empty) + ">";
             soapEnvelope += "</soap:Body></soap:Envelope>";
 
             XmlDocument soapEnvelop = new XmlDocument();

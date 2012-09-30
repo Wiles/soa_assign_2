@@ -55,7 +55,6 @@
     <Compile Include="SoapRequest.cs" />
     <Compile Include="xml\config.cs">
       <DependentUpon>config.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="xml\config.Designer.cs">
       <DependentUpon>config.xsd</DependentUpon>

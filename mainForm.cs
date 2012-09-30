@@ -81,8 +81,8 @@ namespace soa_assign_II
             if (this._services.ContainsKey((string)cmboBoxServiceList.SelectedItem))
             {
                 configurationServicesService service = this._services[(string)cmboBoxServiceList.SelectedItem];
-                nameSpace = service.service_URL;
-                URL = service.xmlns_tns;
+                nameSpace = service.target_namespace;
+                URL = service.service_URL;
             }
 
             if (this._methods.ContainsKey((string)cmboBoxMethodList.SelectedItem))

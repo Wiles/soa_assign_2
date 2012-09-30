@@ -23,7 +23,7 @@
 				</response>
 			</method>
 			<method>
-				<method_name>TopSelectedGoalScorers</method_name>
+				<method_name>Top Selected Goal Scorers</method_name>
 				<method_description>Returns an array with the top N selected goal scorers and how often they are selected. Pass 0 as TopN and you get them all.</method_description>
 				<request>
 
@@ -34,7 +34,7 @@
 				</response>
 			</method>
 			<method>
-				<method_name>StadiumNames</method_name>
+				<method_name>Stadium Names</method_name>
 				<method_description>Returns an array of stadium names where the games are played.</method_description>
 				<request>
 
@@ -45,7 +45,7 @@
 				</response>
 			</method>
 			<method>
-				<method_name>StadiumInfo</method_name>
+				<method_name>Stadium Info</method_name>
 				<method_description>Returns the information we keep about a particular stadium, Pass the name of the stadium.</method_description>
 				<request>
 
@@ -66,13 +66,13 @@
 
 		</service>
 		<service serviceID="1">
-			<name>CountryInfoService</name>
+			<name>Country Info Service</name>
 			<service_URL>http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso</service_URL>
 			<target_namespace>http://www.oorsprong.org/websamples.countryinfo</target_namespace>
 			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
 
 			<method>
-				<method_name>ListOfCountryNamesByName</method_name>
+				<method_name>List Of Country Names By Name</method_name>
 				<method_description>Returns a list of all stored counties ordered by country name</method_description>
 				<request>
 
@@ -81,7 +81,7 @@
 				<response/>
 			</method>
 			<method>
-				<method_name>CapitalCity</method_name>
+				<method_name>Capital City</method_name>
 				<method_description>Returns the name of the captial city for the passed country code</method_description>
 				<request>
 
@@ -92,7 +92,7 @@
 				</response>
 			</method>
 			<method>
-				<method_name>ListOfCurrenciesByCode</method_name>
+				<method_name>List Of Currencies By Code</method_name>
 				<method_description>Returns a list of currencies ordered by code.</method_description>
 				<request>
 
@@ -101,7 +101,7 @@
 				<response/>
 			</method>
 			<method>
-				<method_name>CountryISOCode</method_name>
+				<method_name>Country ISO Code</method_name>
 				<method_description>This function tries to found a country based on the passed country name.</method_description>
 				<request>
 
@@ -114,13 +114,13 @@
 
 		</service>
 		<service  serviceID="2">
-			<name>NumberConversion</name>
+			<name>Number Conversion</name>
 			<service_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso</service_URL>
-			<target_namespace>http://www.dataaccess.com/webservicesserver</target_namespace>
+			<target_namespace>http://www.dataaccess.com/webservicesserver/</target_namespace>
 			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
 
 			<method>
-				<method_name>NumberToWords</method_name>
+				<method_name>Number To Words</method_name>
 				<method_description>Returns the word corresponding to the positive number passed as parameter. Limited to quadrillions.</method_description>
 				<request>
 
@@ -131,7 +131,7 @@
 				</response>
 			</method>
 			<method>
-				<method_name>NumberToDollars</method_name>
+				<method_name>Number To Dollars</method_name>
 				<method_description>Returns the non-zero dollar amount of the passed number.</method_description>
 				<request>
 
@@ -144,27 +144,27 @@
 
 		</service>
 		<service serviceID="3">
-			<name>Cesar Cipher/Decipher</name>
-			<service_URL>http://www.quisque.com/fr/chasses/crypto/cesar.asmx</service_URL>
-			<target_namespace>http://www.quisque.com/fr/chasses/crypto/</target_namespace>
-			<service_description>Cesar Cipher/Decipher</service_description>
+			<name>ISBN Service</name>
+			<service_URL>http://webservices.daehosting.com/services/isbnservice.wso</service_URL>
+			<target_namespace>http://webservices.daehosting.com/ISBN</target_namespace>
+			<service_description>The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number.</service_description>
 
 			<method>
-				<method_name>CipherAll</method_name>
-				<method_description>Cipher a string using Cesar cipher with all alphabet decalage.</method_description>
+				<method_name>IsValidISBN13</method_name>
+				<method_description>The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number.</method_description>
 				<request>
 
-					<paramter name="text" type="string"/>
+					<paramter name="sISBN" type="string"/>
 
 				</request>
 				<response/>
 			</method>
 			<method>
-				<method_name>DecipherAll</method_name>
-				<method_description>Decipher a string using Cesar cipher with all alphabet decalage.</method_description>
+				<method_name>IsValidISBN10</method_name>
+				<method_description>The test is done by calculation on the first 9 digits and compare the result with the checksum number at the end. You have to pass a 10 digits number or 8 digits and an X.</method_description>
 				<request>
 
-					<paramter name="text" type="string"/>
+					<paramter name="sISBN" type="string"/>
 
 				</request>
 				<response/>

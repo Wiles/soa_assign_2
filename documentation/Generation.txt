@@ -1,0 +1,2 @@
+xsd config.xml
+Just xds /c config.xsd
