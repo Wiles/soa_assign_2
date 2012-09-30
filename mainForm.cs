@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Net;
 
 using System.Xml;
 using System.Xml.Serialization;
@@ -22,26 +23,36 @@ namespace soa_assign_II
 
         public mainForm()
         {
-            String xmlPath = @"D:\Users\Stephen\Documents\Visual Studio 2012\Projects\SOAII\xml\config.xml";
-            InitializeComponent();
-
-            XmlSerializer serializer = new XmlSerializer(typeof(configuration));
-            configuration resultingMessage = (configuration)serializer.Deserialize(new StreamReader(xmlPath));
-
-            foreach( configurationServicesService service in  resultingMessage.Items[0].service)
+            try
             {
-                cmboBoxServiceList.Items.Add(service.name);
-                this._services.Add(service.name, service);
+                String xmlPath = @"C:\Users\samuel\workspace\soa_assign_2\xml\config.xml";
+                //String xmlPath = @"D:\Users\Stephen\Documents\Visual Studio 2012\Projects\SOAII\xml\config.xml";
+                InitializeComponent();
+
+                XmlSerializer serializer = new XmlSerializer(typeof(configuration));
+                configuration resultingMessage = (configuration)serializer.Deserialize(new StreamReader(xmlPath));
+
+                foreach (configurationServicesService service in resultingMessage.Items[0].service)
+                {
+                    cmboBoxServiceList.Items.Add(service.name);
+                    this._services.Add(service.name, service);
+                }
+            }
+            catch (Exception) 
+            {
+                MessageBox.Show("Failed to parse config file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
 
         private void cmboBoxServiceList_SelectedIndexChanged(object sender, EventArgs e)
         {
             this._methods.Clear();
+            cmboBoxMethodList.SelectedIndex = -1;
+            cmboBoxMethodList.Items.Clear();
             if (this._services.ContainsKey((string)cmboBoxServiceList.SelectedItem))
             {
                 configurationServicesService service = this._services[(string)cmboBoxServiceList.SelectedItem];
-                cmboBoxMethodList.Items.Clear();
                 foreach (configurationServicesServiceMethod method in service.method)
                 {
                     cmboBoxMethodList.Items.Add(method.method_name);
@@ -54,7 +65,7 @@ namespace soa_assign_II
         {
             this._parameters.Clear();
             parameterPanel.Controls.Clear();
-            if (this._methods.ContainsKey((string)cmboBoxMethodList.SelectedItem)) 
+            if (cmboBoxMethodList.SelectedItem != null && this._methods.ContainsKey((string)cmboBoxMethodList.SelectedItem)) 
             {
                 foreach (configurationServicesServiceMethodParamter parameter in this._methods[(string)cmboBoxMethodList.SelectedItem].request) 
                 {
@@ -92,12 +103,46 @@ namespace soa_assign_II
 
             foreach(KeyValuePair<configurationServicesServiceMethodParamter, TextBox> prms in this._parameters)
             {
-                TextBox temp = (TextBox)prms.Value;
-                parameters.Add(temp.Name, temp.Text);
+                String tempValue = (String)prms.Value.Text;
+                String tempName = (String)prms.Value.Name;
+
+                switch(prms.Key.type){
+                    case("string"):
+                        //Nothing to do here
+                        break;
+                    case("boolean"):
+                        bool b = new bool();
+                        if (!Boolean.TryParse(tempValue, out b))
+                        {
+                            MessageBox.Show("Failed to read value for parameter " + tempName + " value should be either true or false." , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        break;
+                    case ("int"):
+                        Int64 i = new Int64();
+                        if (!Int64.TryParse(tempValue, out i))
+                        {
+                            MessageBox.Show("Failed to read value for parameter " + tempName + " value should be an Integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        break;
+                    default:
+                        //Unknown type no additional validation done
+                        break;
+                }
+                parameters.Add(tempName, tempValue);
             }
             SoapRequest soapRequest = new SoapRequest(URL, nameSpace, method, parameters);
-            string result = soapRequest.CallWebService();
-            txtResult.Text = result;
+            try
+            {
+                string result = soapRequest.CallWebService();
+                txtResult.Text = result;
+            }
+            catch (WebException ex)
+            {
+                MessageBox.Show("Request returned error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
         }
     }
 }
