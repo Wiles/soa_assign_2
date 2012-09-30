@@ -256,6 +256,8 @@ public partial class configurationServicesServiceMethodResponse {
     
     private string nameField;
     
+    private string typeField;
+    
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public configurationServicesServiceMethodResponseItem[] item {
@@ -275,6 +277,17 @@ public partial class configurationServicesServiceMethodResponse {
         }
         set {
             this.nameField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string type {
+        get {
+            return this.typeField;
+        }
+        set {
+            this.typeField = value;
         }
     }
 }

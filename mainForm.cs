@@ -145,20 +145,37 @@ namespace soa_assign_II
 
                 DataTable table = new DataTable();
 
-                foreach ( configurationServicesServiceMethodResponseItem prms in this._methods[(string)cmboBoxMethodList.SelectedItem].response.item)
-                {
-                    table.Columns.Add("m:" + prms.name);
-                }
+                bool simple = "simple".Equals(this._methods[(string)cmboBoxMethodList.SelectedItem].response.type);
 
-
-                foreach (XmlNode node in nodes)
+                if (simple)
                 {
-                    DataRow row = table.NewRow();
-                    foreach (XmlNode child in node.ChildNodes) 
+                    string tag = (string)cmboBoxMethodList.SelectedItem;
+                    table.Columns.Add(tag);
+                    foreach (XmlNode node in nodes)
                     {
-                        row[child.Name] = child.InnerText;
+                        DataRow row = table.NewRow();
+                        row[tag] = node.InnerText;
+                        
+                        table.Rows.Add(row);
                     }
-                    table.Rows.Add(row);
+                }
+                else
+                {
+                    foreach (configurationServicesServiceMethodResponseItem prms in this._methods[(string)cmboBoxMethodList.SelectedItem].response.item)
+                    {
+                        table.Columns.Add("m:" + prms.name);
+                    }
+
+
+                    foreach (XmlNode node in nodes)
+                    {
+                        DataRow row = table.NewRow();
+                        foreach (XmlNode child in node.ChildNodes)
+                        {
+                            row[child.Name] = child.InnerText;
+                        }
+                        table.Rows.Add(row);
+                    }
                 }
                 dgvResults.DataSource = table;
             }

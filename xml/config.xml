@@ -12,7 +12,7 @@
 				<request>
 					<parameter name="bSelected" type="boolean" />
 				</request>
-				<response name ="tPlayerNames">
+				<response name ="tPlayerNames" type="complex">
 					<item name="iId" type="int"/>
 					<item name="sName" type="string"/>
 					<item name="sCountryName" type="string"/>
@@ -21,45 +21,50 @@
 				</response>
 			</method>
 			<method>
-				<method_name>Top Selected Goal Scorers</method_name>
+				<method_name>TopSelectedGoalScorers</method_name>
 				<method_description>Returns an array with the top N selected goal scorers and how often they are selected. Pass 0 as TopN and you get them all.</method_description>
 				<request>
-
 					<parameter name="iTopN" type="int"/>
-
 				</request>
-				<response>
+				<response name ="tTopSelectedGoalScorer" type="complex">
+					<item name="sName" type="string"/>
+					<item name="iSelected" type="int"/>
+					<item name="countries" type="string"/>
 				</response>
 			</method>
 			<method>
-				<method_name>Stadium Names</method_name>
+				<method_name>StadiumNames</method_name>
 				<method_description>Returns an array of stadium names where the games are played.</method_description>
 				<request>
-
-					<parameter name="sStadiumName" type="string" />
-
 				</request>
-				<response>
-				</response>
+				<response name="string" type="simple" />
 			</method>
 			<method>
-				<method_name>Stadium Info</method_name>
+				<method_name>StadiumInfo</method_name>
 				<method_description>Returns the information we keep about a particular stadium, Pass the name of the stadium.</method_description>
 				<request>
-
 					<parameter name="sStadiumName" type="string"/>
-
 				</request>
-				<response/>
+				<response name ="StadiumInfoResult" type="complex">
+					<item name="sStadiumName" type="string"/>
+					<item name="iSeatsCapacity" type="int"/>
+					<item name="sCityName" type="string"/>
+					<item name="sWikipediaURL" type="string"/>
+					<item name="sGoogleMapsURL" type="string"/>
+				</response>
 			</method>
 			<method>
 				<method_name>Teams</method_name>
 				<method_description>Returns an array of all teams that compete with a link to the picture of their flag.</method_description>
 				<request>
-
-
 				</request>
-				<response/>
+				<response name ="tTeamInfo" type="complex">
+					<item name="iId" type="int"/>
+					<item name="sName" type="string"/>
+					<item name="sCountryFlag" type="string"/>
+					<item name="sWikipediaURL" type="string"/>
+					<item name="sCountryFlagLarge" type="string"/>
+				</response>
 			</method>
 
 		</service>
@@ -70,21 +75,19 @@
 			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
 
 			<method>
-				<method_name>List Of Country Names By Name</method_name>
+				<method_name>ListOfCountryNamesByName</method_name>
 				<method_description>Returns a list of all stored counties ordered by country name</method_description>
-				<request>
-
-
-				</request>
-				<response/>
+				<request/>
+				<response name ="tCountryCodeAndName" type="complex">
+					<item name="sISOCode" type="string"/>
+					<item name="sName" type="string"/>
+				</response>
 			</method>
 			<method>
 				<method_name>Capital City</method_name>
 				<method_description>Returns the name of the captial city for the passed country code</method_description>
 				<request>
-
 					<parameter name="sCountryISOCode" type="string"/>
-
 				</request>
 				<response name="CapitalCityResponse">
 					<item name="CapitalCityResult" type="string"/>
@@ -93,21 +96,20 @@
 			<method>
 				<method_name>List Of Currencies By Code</method_name>
 				<method_description>Returns a list of currencies ordered by code.</method_description>
-				<request>
-
-
-				</request>
-				<response/>
+				<request/>
+				<response name ="tCurrency" type="complex">
+					<item name="sISOCode" type="string"/>
+					<item name="sName" type="string"/>
+				</response>
 			</method>
 			<method>
 				<method_name>Country ISO Code</method_name>
 				<method_description>This function tries to found a country based on the passed country name.</method_description>
 				<request>
-
 					<parameter name="sCountryName" type="string"/>
-
 				</request>
-				<response>
+				<response name ="CountryISOCodeResponse" type="complex">
+					<item name="CountryISOCodeResult" type="string"/>
 				</response>
 			</method>
 
@@ -122,22 +124,20 @@
 				<method_name>Number To Words</method_name>
 				<method_description>Returns the word corresponding to the positive number passed as parameter. Limited to quadrillions.</method_description>
 				<request>
-
-					<parameter name="ubiNum" type="int"/>
-
+					<parameter name="ubiNum" type="double"/>
 				</request>
-				<response>
+				<response name ="NumberToWordsResponse" type="complex">
+					<item name="NumberToWordsResult" type="string"/>
 				</response>
 			</method>
 			<method>
 				<method_name>Number To Dollars</method_name>
 				<method_description>Returns the non-zero dollar amount of the passed number.</method_description>
 				<request>
-
-					<parameter name="dNum" type="int"/>
-
+					<parameter name="dNum" type="double"/>
 				</request>
-				<response>
+				<response name ="NumberToDollarsResponse" type="complex">
+					<item name="NumberToDollarsResult" type="string"/>
 				</response>
 			</method>
 
@@ -152,21 +152,21 @@
 				<method_name>IsValidISBN13</method_name>
 				<method_description>The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number.</method_description>
 				<request>
-
 					<parameter name="sISBN" type="string"/>
-
 				</request>
-				<response/>
+				<response name ="IsValidISBN13Response" type="complex">
+					<item name="IsValidISBN13Result" type="string"/>
+				</response>
 			</method>
 			<method>
 				<method_name>IsValidISBN10</method_name>
 				<method_description>The test is done by calculation on the first 9 digits and compare the result with the checksum number at the end. You have to pass a 10 digits number or 8 digits and an X.</method_description>
 				<request>
-
 					<parameter name="sISBN" type="string"/>
-
 				</request>
-				<response/>
+				<response name ="IsValidISBN10Response" type="complex">
+					<item name="IsValidISBN10Result" type="string"/>
+				</response>
 			</method>
 
 		</service>
