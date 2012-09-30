@@ -85,104 +85,111 @@ namespace soa_assign_II
 
         private void btnEngageService_Click(object sender, EventArgs e)
         {
-            string URL = "";
-            string nameSpace = "";
-            string method = "";
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-
-            if (this._services.ContainsKey((string)cmboBoxServiceList.SelectedItem))
-            {
-                configurationServicesService service = this._services[(string)cmboBoxServiceList.SelectedItem];
-                nameSpace = service.target_namespace;
-                URL = service.service_URL;
-            }
-
-            if (this._methods.ContainsKey((string)cmboBoxMethodList.SelectedItem))
-            {
-                method = (string)cmboBoxMethodList.SelectedItem;
-            }
-
-            foreach(KeyValuePair<configurationServicesServiceMethodParameter, TextBox> prms in this._parameters)
-            {
-                String tempValue = (String)prms.Value.Text;
-                String tempName = (String)prms.Value.Name;
-
-                switch(prms.Key.type){
-                    case("string"):
-                        //Nothing to do here
-                        break;
-                    case("boolean"):
-                        bool b = new bool();
-                        if (!Boolean.TryParse(tempValue, out b))
-                        {
-                            MessageBox.Show("Failed to read value for parameter " + tempName + " value should be either true or false." , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        break;
-                    case ("int"):
-                        Int64 i = new Int64();
-                        if (!Int64.TryParse(tempValue, out i))
-                        {
-                            MessageBox.Show("Failed to read value for parameter " + tempName + " value should be an Integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        break;
-                    default:
-                        //Unknown type no additional validation done
-                        break;
-                }
-                parameters.Add(tempName, tempValue);
-            }
-            SoapRequest soapRequest = new SoapRequest(URL, nameSpace, method, parameters);
             try
             {
-                string result = soapRequest.CallWebService();
-                txtResult.Text = result;
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(result);
+                string URL = "";
+                string nameSpace = "";
+                string method = "";
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-                XmlNodeList nodes = doc.SelectNodes("//*[local-name()='" + this._methods[(string)cmboBoxMethodList.SelectedItem].response .name + "']");
-
-                DataTable table = new DataTable();
-
-                bool simple = "simple".Equals(this._methods[(string)cmboBoxMethodList.SelectedItem].response.type);
-
-                if (simple)
+                if (this._services.ContainsKey((string)cmboBoxServiceList.SelectedItem))
                 {
-                    string tag = (string)cmboBoxMethodList.SelectedItem;
-                    table.Columns.Add(tag);
-                    foreach (XmlNode node in nodes)
-                    {
-                        DataRow row = table.NewRow();
-                        row[tag] = node.InnerText;
-                        
-                        table.Rows.Add(row);
-                    }
+                    configurationServicesService service = this._services[(string)cmboBoxServiceList.SelectedItem];
+                    nameSpace = service.target_namespace;
+                    URL = service.service_URL;
                 }
-                else
+
+                if (this._methods.ContainsKey((string)cmboBoxMethodList.SelectedItem))
                 {
-                    foreach (configurationServicesServiceMethodResponseItem prms in this._methods[(string)cmboBoxMethodList.SelectedItem].response.item)
+                    method = (string)cmboBoxMethodList.SelectedItem;
+                }
+
+                foreach (KeyValuePair<configurationServicesServiceMethodParameter, TextBox> prms in this._parameters)
+                {
+                    String tempValue = (String)prms.Value.Text;
+                    String tempName = (String)prms.Value.Name;
+
+                    switch (prms.Key.type)
                     {
-                        table.Columns.Add("m:" + prms.name);
+                        case ("string"):
+                            //Nothing to do here
+                            break;
+                        case ("boolean"):
+                            bool b = new bool();
+                            if (!Boolean.TryParse(tempValue, out b))
+                            {
+                                MessageBox.Show("Failed to read value for parameter " + tempName + " value should be either true or false.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            break;
+                        case ("int"):
+                            Int64 i = new Int64();
+                            if (!Int64.TryParse(tempValue, out i))
+                            {
+                                MessageBox.Show("Failed to read value for parameter " + tempName + " value should be an Integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            break;
+                        default:
+                            //Unknown type no additional validation done
+                            break;
                     }
+                    parameters.Add(tempName, tempValue);
+                }
+                SoapRequest soapRequest = new SoapRequest(URL, nameSpace, method, parameters);
+                try
+                {
+                    string result = soapRequest.CallWebService();
+                    txtResult.Text = result;
+                    XmlDocument doc = new XmlDocument();
+                    doc.LoadXml(result);
 
+                    XmlNodeList nodes = doc.SelectNodes("//*[local-name()='" + this._methods[(string)cmboBoxMethodList.SelectedItem].response.name + "']");
 
-                    foreach (XmlNode node in nodes)
+                    DataTable table = new DataTable();
+
+                    bool simple = "simple".Equals(this._methods[(string)cmboBoxMethodList.SelectedItem].response.type);
+
+                    if (simple)
                     {
-                        DataRow row = table.NewRow();
-                        foreach (XmlNode child in node.ChildNodes)
+                        string tag = (string)cmboBoxMethodList.SelectedItem;
+                        table.Columns.Add(tag);
+                        foreach (XmlNode node in nodes)
                         {
-                            row[child.Name] = child.InnerText;
+                            DataRow row = table.NewRow();
+                            row[tag] = node.InnerText;
+
+                            table.Rows.Add(row);
                         }
-                        table.Rows.Add(row);
                     }
+                    else
+                    {
+                        foreach (configurationServicesServiceMethodResponseItem prms in this._methods[(string)cmboBoxMethodList.SelectedItem].response.item)
+                        {
+                            table.Columns.Add("m:" + prms.name);
+                        }
+
+
+                        foreach (XmlNode node in nodes)
+                        {
+                            DataRow row = table.NewRow();
+                            foreach (XmlNode child in node.ChildNodes)
+                            {
+                                row[child.Name] = child.InnerText;
+                            }
+                            table.Rows.Add(row);
+                        }
+                    }
+                    dgvResults.DataSource = table;
                 }
-                dgvResults.DataSource = table;
-            }
-            catch (WebException ex)
+                catch (WebException ex)
+                {
+                    MessageBox.Show("Request returned error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } 
+            catch (Exception ex) 
             {
-                MessageBox.Show("Request returned error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+                MessageBox.Show("Error handling request: " + ex.Message , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
