@@ -180,6 +180,7 @@ namespace soa_assign_II
                         }
                     }
                     dgvResults.DataSource = table;
+                    dgvResults.AutoResizeColumns();
                 }
                 catch (WebException ex)
                 {
