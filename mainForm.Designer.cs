@@ -88,6 +88,8 @@
             // 
             // parameterPanel
             // 
+            this.parameterPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.parameterPanel.Location = new System.Drawing.Point(12, 140);
             this.parameterPanel.Name = "parameterPanel";
             this.parameterPanel.Size = new System.Drawing.Size(217, 236);
@@ -95,6 +97,7 @@
             // 
             // btnEngageService
             // 
+            this.btnEngageService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEngageService.Location = new System.Drawing.Point(12, 390);
             this.btnEngageService.Name = "btnEngageService";
             this.btnEngageService.Size = new System.Drawing.Size(217, 23);
@@ -105,6 +108,8 @@
             // 
             // txtResult
             // 
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResult.Location = new System.Drawing.Point(241, 274);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
@@ -115,6 +120,9 @@
             // 
             this.dgvResults.AllowUserToAddRows = false;
             this.dgvResults.AllowUserToDeleteRows = false;
+            this.dgvResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResults.Location = new System.Drawing.Point(241, 13);
             this.dgvResults.Name = "dgvResults";

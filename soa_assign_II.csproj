@@ -82,6 +82,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="xml\config.xsc">
+      <DependentUpon>config.xsd</DependentUpon>
+    </None>
     <None Include="xml\config.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>

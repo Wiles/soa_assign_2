@@ -169,7 +169,6 @@ namespace soa_assign_II
                             table.Columns.Add("m:" + prms.name);
                         }
 
-
                         foreach (XmlNode node in nodes)
                         {
                             DataRow row = table.NewRow();

@@ -147,7 +147,6 @@
 			<service_URL>http://webservices.daehosting.com/services/isbnservice.wso</service_URL>
 			<target_namespace>http://webservices.daehosting.com/ISBN</target_namespace>
 			<service_description>The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number.</service_description>
-
 			<method>
 				<method_name>IsValidISBN13</method_name>
 				<method_description>The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number.</method_description>
