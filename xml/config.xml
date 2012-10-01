@@ -35,9 +35,10 @@
 			<method>
 				<method_name>StadiumNames</method_name>
 				<method_description>Returns an array of stadium names where the games are played.</method_description>
-				<request>
-				</request>
-				<response name="string" type="simple" />
+				<request />
+				<response name="StadiumNamesResult" type="simple">
+					<item name="string" type="string" />
+				</response>
 			</method>
 			<method>
 				<method_name>StadiumInfo</method_name>
@@ -66,14 +67,12 @@
 					<item name="sCountryFlagLarge" type="string"/>
 				</response>
 			</method>
-
 		</service>
 		<service serviceID="1">
 			<name>Country Info Service</name>
 			<service_URL>http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso</service_URL>
 			<target_namespace>http://www.oorsprong.org/websamples.countryinfo</target_namespace>
 			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
-
 			<method>
 				<method_name>ListOfCountryNamesByName</method_name>
 				<method_description>Returns a list of all stored counties ordered by country name</method_description>
@@ -89,7 +88,7 @@
 				<request>
 					<parameter name="sCountryISOCode" type="string"/>
 				</request>
-				<response name="CapitalCityResponse">
+				<response name="CapitalCityResponse" type="simple">
 					<item name="CapitalCityResult" type="string"/>
 				</response>
 			</method>
@@ -108,18 +107,16 @@
 				<request>
 					<parameter name="sCountryName" type="string"/>
 				</request>
-				<response name ="CountryISOCodeResponse" type="complex">
-					<item name="CountryISOCodeResult" type="string"/>
+				<response name ="CountryISOCodeResponse " type="simple" >
+					<item name="CountryISOCodeResult" type="string" />
 				</response>
 			</method>
-
 		</service>
 		<service  serviceID="2">
 			<name>Number Conversion</name>
 			<service_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso</service_URL>
 			<target_namespace>http://www.dataaccess.com/webservicesserver/</target_namespace>
 			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
-
 			<method>
 				<method_name>Number To Words</method_name>
 				<method_description>Returns the word corresponding to the positive number passed as parameter. Limited to quadrillions.</method_description>
@@ -140,7 +137,6 @@
 					<item name="NumberToDollarsResult" type="string"/>
 				</response>
 			</method>
-
 		</service>
 		<service serviceID="3">
 			<name>ISBN Service</name>
@@ -167,7 +163,6 @@
 					<item name="IsValidISBN10Result" type="string"/>
 				</response>
 			</method>
-
 		</service>
 	</services>
 </configuration>
