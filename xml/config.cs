@@ -78,8 +78,6 @@ public partial class configurationServicesService {
     
     private configurationServicesServiceMethod[] methodField;
     
-    private string serviceIDField;
-    
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public string name {
@@ -134,17 +132,6 @@ public partial class configurationServicesService {
             this.methodField = value;
         }
     }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string serviceID {
-        get {
-            return this.serviceIDField;
-        }
-        set {
-            this.serviceIDField = value;
-        }
-    }
 }
 
 /// <remarks/>
@@ -160,8 +147,6 @@ public partial class configurationServicesServiceMethod {
     private string method_descriptionField;
     
     private configurationServicesServiceMethodParameter[] requestField;
-    
-    private configurationServicesServiceMethodResponse responseField;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -196,17 +181,6 @@ public partial class configurationServicesServiceMethod {
             this.requestField = value;
         }
     }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public configurationServicesServiceMethodResponse response {
-        get {
-            return this.responseField;
-        }
-        set {
-            this.responseField = value;
-        }
-    }
 }
 
 /// <remarks/>
@@ -216,89 +190,6 @@ public partial class configurationServicesServiceMethod {
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 public partial class configurationServicesServiceMethodParameter {
-    
-    private string nameField;
-    
-    private string typeField;
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string name {
-        get {
-            return this.nameField;
-        }
-        set {
-            this.nameField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string type {
-        get {
-            return this.typeField;
-        }
-        set {
-            this.typeField = value;
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-[System.SerializableAttribute()]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-public partial class configurationServicesServiceMethodResponse {
-    
-    private configurationServicesServiceMethodResponseItem[] itemField;
-    
-    private string nameField;
-    
-    private string typeField;
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public configurationServicesServiceMethodResponseItem[] item {
-        get {
-            return this.itemField;
-        }
-        set {
-            this.itemField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string name {
-        get {
-            return this.nameField;
-        }
-        set {
-            this.nameField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string type {
-        get {
-            return this.typeField;
-        }
-        set {
-            this.typeField = value;
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-[System.SerializableAttribute()]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-public partial class configurationServicesServiceMethodResponseItem {
     
     private string nameField;
     

@@ -36,8 +36,7 @@
             this.parameterPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnEngageService = new System.Windows.Forms.Button();
             this.txtResult = new System.Windows.Forms.TextBox();
-            this.dgvResults = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
+            this.tvResults = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // cmboBoxServiceList
@@ -117,19 +116,15 @@
             this.txtResult.Size = new System.Drawing.Size(598, 139);
             this.txtResult.TabIndex = 10;
             // 
-            // dgvResults
+            // tvResults
             // 
-            this.dgvResults.AllowUserToAddRows = false;
-            this.dgvResults.AllowUserToDeleteRows = false;
-            this.dgvResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tvResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults.Location = new System.Drawing.Point(241, 13);
-            this.dgvResults.Name = "dgvResults";
-            this.dgvResults.ReadOnly = true;
-            this.dgvResults.Size = new System.Drawing.Size(598, 255);
-            this.dgvResults.TabIndex = 11;
+            this.tvResults.Location = new System.Drawing.Point(241, 13);
+            this.tvResults.Name = "tvResults";
+            this.tvResults.Size = new System.Drawing.Size(598, 255);
+            this.tvResults.TabIndex = 11;
             // 
             // mainForm
             // 
@@ -137,7 +132,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(851, 425);
-            this.Controls.Add(this.dgvResults);
+            this.Controls.Add(this.tvResults);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.btnEngageService);
             this.Controls.Add(this.parameterPanel);
@@ -148,7 +143,6 @@
             this.Controls.Add(this.cmboBoxServiceList);
             this.Name = "mainForm";
             this.Text = "Service Exposer";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,6 +158,6 @@
         private System.Windows.Forms.FlowLayoutPanel parameterPanel;
         private System.Windows.Forms.Button btnEngageService;
         private System.Windows.Forms.TextBox txtResult;
-        private System.Windows.Forms.DataGridView dgvResults;
+        private System.Windows.Forms.TreeView tvResults;
     }
 }
