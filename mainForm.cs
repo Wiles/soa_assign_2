@@ -26,8 +26,8 @@ namespace soa_assign_II
         {
             try
             {
-                String xmlPath = @"C:\Users\samuel\workspace\soa_assign_2\xml\config.xml";
-                //String xmlPath = @"D:\Users\Stephen\Documents\Visual Studio 2012\Projects\SOAII\xml\config.xml";
+                //String xmlPath = @"C:\Users\samuel\workspace\soa_assign_2\xml\config.xml";
+                String xmlPath = @"D:\Users\Stephen\Documents\Visual Studio 2012\Projects\SOAII\xml\config.xml";
                 InitializeComponent();
 
                 XmlSerializer serializer = new XmlSerializer(typeof(configuration));
@@ -39,10 +39,10 @@ namespace soa_assign_II
                     this._services.Add(service.name, service);
                 }
             }
-            catch (Exception) 
+            catch (Exception exc) 
             {
-                MessageBox.Show("Failed to parse config file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
+                MessageBox.Show("Failed to parse config file. " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
