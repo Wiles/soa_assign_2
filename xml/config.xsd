@@ -9,10 +9,10 @@
               <xs:element name="service" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="name" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
-                    <xs:element name="service_URL" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
-                    <xs:element name="target_namespace" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
-                    <xs:element name="service_description" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
+                    <xs:element name="name" type="xs:string" minOccurs="0" />
+                    <xs:element name="service_URL" type="xs:string" minOccurs="0" />
+                    <xs:element name="target_namespace" type="xs:string" minOccurs="0" />
+                    <xs:element name="service_description" type="xs:string" minOccurs="0" />
                     <xs:element name="method" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
@@ -30,25 +30,10 @@
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-                          <xs:element name="response" minOccurs="1" maxOccurs="1">
-                            <xs:complexType>
-                              <xs:sequence>
-                                <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
-                                  <xs:complexType>
-                                    <xs:attribute name="name" type="xs:string" />
-                                    <xs:attribute name="type" type="xs:string" />
-                                  </xs:complexType>
-                                </xs:element>
-                              </xs:sequence>
-                              <xs:attribute name="name" type="xs:string" />
-                              <xs:attribute name="type" type="xs:string" />
-                            </xs:complexType>
-                          </xs:element>
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
-                  <xs:attribute name="serviceID" type="xs:string" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>

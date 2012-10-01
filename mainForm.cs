@@ -85,6 +85,7 @@ namespace soa_assign_II
 
         private void btnEngageService_Click(object sender, EventArgs e)
         {
+            tvResults.Nodes.Clear();
             try
             {
                 string URL = "";
@@ -130,6 +131,14 @@ namespace soa_assign_II
                                 return;
                             }
                             break;
+                        case ("double"):
+                            Double d = new Double();
+                            if (!Double.TryParse(tempValue, out d))
+                            {
+                                MessageBox.Show("Failed to read value for parameter " + tempName + " value should be a Double.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            break;
                         default:
                             //Unknown type no additional validation done
                             break;
@@ -144,43 +153,10 @@ namespace soa_assign_II
                     XmlDocument doc = new XmlDocument();
                     doc.LoadXml(result);
 
-                    XmlNodeList nodes = doc.SelectNodes("//*[local-name()='" + this._methods[(string)cmboBoxMethodList.SelectedItem].response.name + "']");
-
-                    DataTable table = new DataTable();
-
-                    bool simple = "simple".Equals(this._methods[(string)cmboBoxMethodList.SelectedItem].response.type);
-
-                    if (simple)
-                    {
-                        string tag = (string)cmboBoxMethodList.SelectedItem;
-                        table.Columns.Add(tag);
-                        foreach (XmlNode node in nodes)
-                        {
-                            DataRow row = table.NewRow();
-                            row[tag] = node.InnerText;
-
-                            table.Rows.Add(row);
-                        }
-                    }
-                    else
-                    {
-                        foreach (configurationServicesServiceMethodResponseItem prms in this._methods[(string)cmboBoxMethodList.SelectedItem].response.item)
-                        {
-                            table.Columns.Add("m:" + prms.name);
-                        }
-
-                        foreach (XmlNode node in nodes)
-                        {
-                            DataRow row = table.NewRow();
-                            foreach (XmlNode child in node.ChildNodes)
-                            {
-                                row[child.Name] = child.InnerText;
-                            }
-                            table.Rows.Add(row);
-                        }
-                    }
-                    dgvResults.DataSource = table;
-                    dgvResults.AutoResizeColumns();
+                    TreeNode newNode = CreateNode(doc.SelectSingleNode("//*[local-name()='Body']"));
+                    tvResults.Nodes.Add(newNode);
+                    tvResults.ExpandAll();
+                    tvResults.SelectedNode = newNode;
                 }
                 catch (WebException ex)
                 {
@@ -190,6 +166,23 @@ namespace soa_assign_II
             catch (Exception ex) 
             {
                 MessageBox.Show("Error handling request: " + ex.Message , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private TreeNode CreateNode(XmlNode nodes)
+        {   
+            if (nodes.ChildNodes.Count == 0)
+            {
+                return new TreeNode(nodes.InnerText);
+            }
+            else
+            {
+                List<TreeNode> nodesList = new List<TreeNode>();
+                foreach ( XmlNode node in nodes)
+                {
+                    nodesList.Add(CreateNode(node));
+                }
+                return new TreeNode(nodes.Name, nodesList.ToArray());
             }
         }
     }
