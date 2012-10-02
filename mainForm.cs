@@ -22,38 +22,53 @@ namespace soa_assign_II
         private Dictionary<string, configurationServicesServiceMethod> _methods = new Dictionary<string, configurationServicesServiceMethod>();
         private Dictionary<configurationServicesServiceMethodParameter, TextBox> _parameters = new Dictionary<configurationServicesServiceMethodParameter, TextBox>();
 
-        public mainForm()
+        public mainForm(Dictionary<string, configurationServicesService> services)
         {
-            try
+            InitializeComponent();
+            foreach (KeyValuePair<string, configurationServicesService> serv in services)
             {
-                //String xmlPath = @"C:\Users\samuel\workspace\soa_assign_2\xml\config.xml";
-                String xmlPath = @"D:\Users\Stephen\Documents\Visual Studio 2012\Projects\SOAII\xml\config.xml";
-                InitializeComponent();
-
-                XmlSerializer serializer = new XmlSerializer(typeof(configuration));
-                configuration resultingMessage = (configuration)serializer.Deserialize(new StreamReader(xmlPath));
-
-                foreach (configurationServicesService service in resultingMessage.Items[0].service)
-                {
-                    cmboBoxServiceList.Items.Add(service.name);
-                    this._services.Add(service.name, service);
-                }
+                configurationServicesService f = serv.Value;
+                cmboBoxServiceList.Items.Add(serv.Value.name);
+                _services.Add(serv.Key, f);
             }
-            catch (Exception exc) 
-            {
-                MessageBox.Show("Failed to parse config file. " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //try
+            //{
+            //    //String xmlPath = @"C:\Users\samuel\workspace\soa_assign_2\xml\config.xml";
+            //    String xmlPath = @"D:\Users\Stephen\Documents\Visual Studio 2012\Projects\SOAII\xml\config.xml";
+                
+
+            //    XmlSerializer serializer = new XmlSerializer(typeof(configuration));
+            //    configuration resultingMessage = (configuration)serializer.Deserialize(new StreamReader(xmlPath));
+
+                //foreach (configurationServicesService service in resultingMessage.Items[0].service)
+                //{
+                //    cmboBoxServiceList.Items.Add(service.name);
+                //    this._services.Add(service.name, service);
+                //}
+            //}
+            //catch (Exception exc) 
+            //{
+            //    MessageBox.Show("Failed to parse config file. " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
         }
 
         private void cmboBoxServiceList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            serviceDescriptionPanel.Controls.Clear();
+            configurationServicesService service = this._services[(string)cmboBoxServiceList.SelectedItem];
+            Label l = new Label();
+            l.Width = 216;
+            l.Height = 58;
+            l.Text = service.service_description;
+            serviceDescriptionPanel.Controls.Add(l);
+
             this._methods.Clear();
             cmboBoxMethodList.SelectedIndex = -1;
             cmboBoxMethodList.Items.Clear();
             if (this._services.ContainsKey((string)cmboBoxServiceList.SelectedItem))
             {
-                configurationServicesService service = this._services[(string)cmboBoxServiceList.SelectedItem];
+                service = this._services[(string)cmboBoxServiceList.SelectedItem];
                 foreach (configurationServicesServiceMethod method in service.method)
                 {
                     cmboBoxMethodList.Items.Add(method.method_name);
@@ -64,18 +79,27 @@ namespace soa_assign_II
 
         private void cmboBoxMethodList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            methodDescriptionPanel.Controls.Clear();
+            configurationServicesServiceMethod method = this._methods[(string)cmboBoxMethodList.SelectedItem];
+            Label l = new Label();
+            l.Width = 216;
+            l.Height = 58;
+            l.Text = method.method_description;
+            methodDescriptionPanel.Controls.Add(l);
+
             this._parameters.Clear();
             parameterPanel.Controls.Clear();
             if (cmboBoxMethodList.SelectedItem != null && this._methods.ContainsKey((string)cmboBoxMethodList.SelectedItem)) 
             {
                 foreach (configurationServicesServiceMethodParameter parameter in this._methods[(string)cmboBoxMethodList.SelectedItem].request) 
                 {
-                    Label l = new Label();
-                    l.Text = parameter.name;
+                    l = new Label();
+                    l.Width = 216;
+                    l.Text = parameter.friendly;
                     parameterPanel.Controls.Add(l);
 
                     TextBox t = new TextBox();
-                    t.Width = parameterPanel.Width;
+                    t.Width = 216;
                     t.Name = parameter.name;
                     parameterPanel.Controls.Add(t);
                     this._parameters.Add(parameter, t);

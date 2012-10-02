@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.cmboBoxServiceList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,6 +38,8 @@
             this.btnEngageService = new System.Windows.Forms.Button();
             this.txtResult = new System.Windows.Forms.TextBox();
             this.tvResults = new System.Windows.Forms.TreeView();
+            this.methodDescriptionPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.serviceDescriptionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // cmboBoxServiceList
@@ -70,7 +73,7 @@
             // cmboBoxMethodList
             // 
             this.cmboBoxMethodList.FormattingEnabled = true;
-            this.cmboBoxMethodList.Location = new System.Drawing.Point(12, 113);
+            this.cmboBoxMethodList.Location = new System.Drawing.Point(12, 174);
             this.cmboBoxMethodList.Name = "cmboBoxMethodList";
             this.cmboBoxMethodList.Size = new System.Drawing.Size(217, 21);
             this.cmboBoxMethodList.TabIndex = 3;
@@ -79,7 +82,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 97);
+            this.label3.Location = new System.Drawing.Point(9, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(216, 13);
             this.label3.TabIndex = 4;
@@ -89,9 +92,9 @@
             // 
             this.parameterPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.parameterPanel.Location = new System.Drawing.Point(12, 140);
+            this.parameterPanel.Location = new System.Drawing.Point(12, 274);
             this.parameterPanel.Name = "parameterPanel";
-            this.parameterPanel.Size = new System.Drawing.Size(217, 236);
+            this.parameterPanel.Size = new System.Drawing.Size(217, 102);
             this.parameterPanel.TabIndex = 6;
             // 
             // btnEngageService
@@ -126,12 +129,32 @@
             this.tvResults.Size = new System.Drawing.Size(598, 255);
             this.tvResults.TabIndex = 11;
             // 
+            // methodDescriptionPanel
+            // 
+            this.methodDescriptionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.methodDescriptionPanel.Location = new System.Drawing.Point(12, 201);
+            this.methodDescriptionPanel.Name = "methodDescriptionPanel";
+            this.methodDescriptionPanel.Size = new System.Drawing.Size(217, 59);
+            this.methodDescriptionPanel.TabIndex = 7;
+            // 
+            // serviceDescriptionPanel
+            // 
+            this.serviceDescriptionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.serviceDescriptionPanel.Location = new System.Drawing.Point(12, 96);
+            this.serviceDescriptionPanel.Name = "serviceDescriptionPanel";
+            this.serviceDescriptionPanel.Size = new System.Drawing.Size(217, 59);
+            this.serviceDescriptionPanel.TabIndex = 8;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(851, 425);
+            this.Controls.Add(this.serviceDescriptionPanel);
+            this.Controls.Add(this.methodDescriptionPanel);
             this.Controls.Add(this.tvResults);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.btnEngageService);
@@ -141,6 +164,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmboBoxServiceList);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "mainForm";
             this.Text = "Service Exposer";
             this.ResumeLayout(false);
@@ -159,5 +183,7 @@
         private System.Windows.Forms.Button btnEngageService;
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.TreeView tvResults;
+        private System.Windows.Forms.FlowLayoutPanel methodDescriptionPanel;
+        private System.Windows.Forms.FlowLayoutPanel serviceDescriptionPanel;
     }
 }

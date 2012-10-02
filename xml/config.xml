@@ -5,19 +5,19 @@
 			<name>Worldcup 2010 Football Championship</name>
 			<service_URL>http://footballpool.dataaccess.eu/data/info.wso</service_URL>
 			<target_namespace>http://footballpool.dataaccess.eu</target_namespace>
-			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
+			<service_description>This Visual DataFlex Web Service exposes functions for the current football pool.</service_description>
 			<method>
 				<method_name>All Player Names</method_name>
 				<method_description>Returns an array with the id, name, country and flag reference of all players</method_description>
 				<request>
-					<parameter name="bSelected" type="boolean" />
+					<parameter name="bSelected" type="boolean" friendly="Selected (True or False)"/>
 				</request>
 			</method>
 			<method>
 				<method_name>Top Selected Goal Scorers</method_name>
 				<method_description>Returns an array with the top N selected goal scorers and how often they are selected. Pass 0 as TopN and you get them all.</method_description>
 				<request>
-					<parameter name="iTopN" type="int"/>
+					<parameter name="iTopN" type="int" friendly="How Many Players? (0 is All Players)"/>
 				</request>
 			</method>
 			<method>
@@ -29,7 +29,7 @@
 				<method_name>Stadium Info</method_name>
 				<method_description>Returns the information we keep about a particular stadium, Pass the name of the stadium.</method_description>
 				<request>
-					<parameter name="sStadiumName" type="string"/>
+					<parameter name="sStadiumName" type="string" friendly="Stadium Name"/>
 				</request>
 			</method>
 			<method>
@@ -42,7 +42,7 @@
 			<name>Country Info Service</name>
 			<service_URL>http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso</service_URL>
 			<target_namespace>http://www.oorsprong.org/websamples.countryinfo</target_namespace>
-			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
+			<service_description>This Visual DataFlex Web Service opens up country information. 2 letter ISO codes are used for Country code.</service_description>
 			<method>
 				<method_name>List Of Country Names By Name</method_name>
 				<method_description>Returns a list of all stored counties ordered by country name</method_description>
@@ -52,7 +52,7 @@
 				<method_name>Capital City</method_name>
 				<method_description>Returns the name of the captial city for the passed country code</method_description>
 				<request>
-					<parameter name="sCountryISOCode" type="string"/>
+					<parameter name="sCountryISOCode" type="string" friendly="Country ISO Code"/>
 				</request>
 			</method>
 			<method>
@@ -64,7 +64,7 @@
 				<method_name>Country ISO Code</method_name>
 				<method_description>This function tries to found a country based on the passed country name.</method_description>
 				<request>
-					<parameter name="sCountryName" type="string"/>
+					<parameter name="sCountryName" type="string" friendly="Country Name"/>
 				</request>
 			</method>
 		</service>
@@ -72,19 +72,19 @@
 			<name>Number Conversion</name>
 			<service_URL>http://www.dataaccess.com/webservicesserver/numberconversion.wso</service_URL>
 			<target_namespace>http://www.dataaccess.com/webservicesserver/</target_namespace>
-			<service_description>Conversion functions to convert numbers into words (English) and numbers into dollar amounts.</service_description>
+			<service_description>The Number Conversion Web Service, implemented with Visual DataFlex, provides functions that convert numbers into words or dollar amounts.</service_description>
 			<method>
 				<method_name>Number To Words</method_name>
 				<method_description>Returns the word corresponding to the positive number passed as parameter. Limited to quadrillions.</method_description>
 				<request>
-					<parameter name="ubiNum" type="double"/>
+					<parameter name="ubiNum" type="double" friendly="Number" />
 				</request>
 			</method>
 			<method>
 				<method_name>Number To Dollars</method_name>
 				<method_description>Returns the non-zero dollar amount of the passed number.</method_description>
 				<request>
-					<parameter name="dNum" type="double"/>
+					<parameter name="dNum" type="double" friendly="Number" />
 				</request>
 			</method>
 		</service>
@@ -92,19 +92,19 @@
 			<name>ISBN Service</name>
 			<service_URL>http://webservices.daehosting.com/services/isbnservice.wso</service_URL>
 			<target_namespace>http://webservices.daehosting.com/ISBN</target_namespace>
-			<service_description>The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number.</service_description>
+			<service_description>Visual DataFlex Web Service to validate ISBN numbers.</service_description>
 			<method>
 				<method_name>IsValidISBN13</method_name>
 				<method_description>The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number.</method_description>
 				<request>
-					<parameter name="sISBN" type="string"/>
+					<parameter name="sISBN" type="string" friendly="13 Digit ISBN"/>
 				</request>
 			</method>
 			<method>
 				<method_name>IsValidISBN10</method_name>
 				<method_description>The test is done by calculation on the first 9 digits and compare the result with the checksum number at the end. You have to pass a 10 digits number or 8 digits and an X.</method_description>
 				<request>
-					<parameter name="sISBN" type="string"/>
+					<parameter name="sISBN" type="string" friendly="10 Digit ISBN"/>
 				</request>
 			</method>
 		</service>
@@ -113,4 +113,4 @@
 <!--Football : http://www.soapclient.com/soapclient?template=%2Fclientform.html&fn=soapform&SoapTemplate=%2FSoapResult.html&SoapWSDL=http%3A%2F%2Ffootballpool.dataaccess.eu%2Fdata%2Finfo.wso%3FWSDL&_ArraySize=2-->
 <!--CountryInfo : http://www.soapclient.com/soapclient?template=%2Fclientform.html&fn=soapform&SoapTemplate=%2FSoapResult.html&SoapWSDL=http%3A%2F%2Fwebservices.oorsprong.org%2Fwebsamples.countryinfo%2FCountryInfoService.wso%3FWSDL&_ArraySize=2-->
 <!--NumberConversion : http://www.soapclient.com/soapclient?template=%2Fclientform.html&fn=soapform&SoapTemplate=%2FSoapResult.html&SoapWSDL=http%3A%2F%2Fwww.dataaccess.com%2Fwebservicesserver%2Fnumberconversion.wso%3FWSDL&_ArraySize=2-->
-<!--Cesar : http://www.soapclient.com/soapclient?template=%2Fclientform.html&fn=soapform&SoapTemplate=%2FSoapResult.html&SoapWSDL=http%3A%2F%2Fwww.quisque.com%2Ffr%2Fchasses%2Fcrypto%2Fcesar.asmx%3FWSDL&_ArraySize=2-->
+<!--ISBN : http://www.soapclient.com/soapclient?template=%2Fclientform.html&fn=soapform&SoapTemplate=%2FSoapResult.html&SoapWSDL=http%3A%2F%2Fwebservices.daehosting.com%2Fservices%2Fisbnservice.wso%3FWSDL&_ArraySize=2-->

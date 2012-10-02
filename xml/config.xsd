@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="configuration" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="configuration" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+  <xs:element name="configuration" msdata:IsDataSet="true" msdata:Locale="en-US">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="services">
@@ -25,6 +25,7 @@
                                   <xs:complexType>
                                     <xs:attribute name="name" type="xs:string" />
                                     <xs:attribute name="type" type="xs:string" />
+                                    <xs:attribute name="friendly" type="xs:string" />
                                   </xs:complexType>
                                 </xs:element>
                               </xs:sequence>

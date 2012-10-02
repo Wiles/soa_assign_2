@@ -1,2 +1,2 @@
 xsd config.xml
-Just xds /c config.xsd
+xsd /c config.xsd
