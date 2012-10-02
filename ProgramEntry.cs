@@ -19,28 +19,7 @@ namespace soa_assign_II
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new mainForm());
-            Dictionary<string, configurationServicesService> _services = new Dictionary<string, configurationServicesService>();
-            try
-            {
-                //String xmlPath = @"C:\Users\samuel\workspace\soa_assign_2\xml\config.xml";
-                String xmlPath = @"D:\Users\Stephen\Documents\Visual Studio 2012\Projects\SOAII\xml\config.xml";
-
-                XmlSerializer serializer = new XmlSerializer(typeof(configuration));
-                configuration resultingMessage = (configuration)serializer.Deserialize(new StreamReader(xmlPath));
-
-                foreach (configurationServicesService service in resultingMessage.Items[0].service)
-                {
-                //    cmboBoxServiceList.Items.Add(service.name);
-                    _services.Add(service.name, service);
-                }
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Failed to parse config file. " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            Application.Run(new mainForm(_services));
+            Application.Run(new mainForm());
         }
     }
 }

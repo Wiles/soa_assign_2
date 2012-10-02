@@ -22,35 +22,10 @@ namespace soa_assign_II
         private Dictionary<string, configurationServicesServiceMethod> _methods = new Dictionary<string, configurationServicesServiceMethod>();
         private Dictionary<configurationServicesServiceMethodParameter, TextBox> _parameters = new Dictionary<configurationServicesServiceMethodParameter, TextBox>();
 
-        public mainForm(Dictionary<string, configurationServicesService> services)
+        public mainForm()
         {
             InitializeComponent();
-            foreach (KeyValuePair<string, configurationServicesService> serv in services)
-            {
-                configurationServicesService f = serv.Value;
-                cmboBoxServiceList.Items.Add(serv.Value.name);
-                _services.Add(serv.Key, f);
-            }
-            //try
-            //{
-            //    //String xmlPath = @"C:\Users\samuel\workspace\soa_assign_2\xml\config.xml";
-            //    String xmlPath = @"D:\Users\Stephen\Documents\Visual Studio 2012\Projects\SOAII\xml\config.xml";
-                
-
-            //    XmlSerializer serializer = new XmlSerializer(typeof(configuration));
-            //    configuration resultingMessage = (configuration)serializer.Deserialize(new StreamReader(xmlPath));
-
-                //foreach (configurationServicesService service in resultingMessage.Items[0].service)
-                //{
-                //    cmboBoxServiceList.Items.Add(service.name);
-                //    this._services.Add(service.name, service);
-                //}
-            //}
-            //catch (Exception exc) 
-            //{
-            //    MessageBox.Show("Failed to parse config file. " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            
         }
 
         private void cmboBoxServiceList_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,6 +182,42 @@ namespace soa_assign_II
                     nodesList.Add(CreateNode(node));
                 }
                 return new TreeNode(nodes.Name, nodesList.ToArray());
+            }
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dia = new OpenFileDialog();
+            dia.Multiselect = false;
+            if (dia.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(configuration));
+                    configuration resultingMessage = (configuration)serializer.Deserialize(new StreamReader(dia.FileName));
+
+                    _services.Clear();
+                    foreach (configurationServicesService service in resultingMessage.Items[0].service)
+                    {
+                        //    cmboBoxServiceList.Items.Add(service.name);
+                        _services.Add(service.name, service);
+                    }
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("Failed to parse config file. " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                cmboBoxMethodList.Items.Clear();
+                cmboBoxServiceList.Items.Clear();
+                tvResults.Nodes.Clear();
+                serviceDescriptionPanel.Controls.Clear();
+                methodDescriptionPanel.Controls.Clear();
+                foreach (KeyValuePair<string, configurationServicesService> serv in _services)
+                {
+                    cmboBoxServiceList.Items.Add(serv.Value.name);
+                }
             }
         }
     }

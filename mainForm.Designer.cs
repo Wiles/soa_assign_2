@@ -40,12 +40,13 @@
             this.tvResults = new System.Windows.Forms.TreeView();
             this.methodDescriptionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.serviceDescriptionPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmboBoxServiceList
             // 
             this.cmboBoxServiceList.FormattingEnabled = true;
-            this.cmboBoxServiceList.Location = new System.Drawing.Point(12, 69);
+            this.cmboBoxServiceList.Location = new System.Drawing.Point(13, 95);
             this.cmboBoxServiceList.Name = "cmboBoxServiceList";
             this.cmboBoxServiceList.Size = new System.Drawing.Size(217, 21);
             this.cmboBoxServiceList.TabIndex = 0;
@@ -54,7 +55,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 53);
+            this.label1.Location = new System.Drawing.Point(14, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(216, 13);
             this.label1.TabIndex = 1;
@@ -63,7 +64,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 13);
+            this.label2.Location = new System.Drawing.Point(14, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(215, 40);
             this.label2.TabIndex = 2;
@@ -73,7 +74,7 @@
             // cmboBoxMethodList
             // 
             this.cmboBoxMethodList.FormattingEnabled = true;
-            this.cmboBoxMethodList.Location = new System.Drawing.Point(12, 174);
+            this.cmboBoxMethodList.Location = new System.Drawing.Point(13, 200);
             this.cmboBoxMethodList.Name = "cmboBoxMethodList";
             this.cmboBoxMethodList.Size = new System.Drawing.Size(217, 21);
             this.cmboBoxMethodList.TabIndex = 3;
@@ -82,7 +83,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 158);
+            this.label3.Location = new System.Drawing.Point(10, 184);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(216, 13);
             this.label3.TabIndex = 4;
@@ -92,15 +93,15 @@
             // 
             this.parameterPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.parameterPanel.Location = new System.Drawing.Point(12, 274);
+            this.parameterPanel.Location = new System.Drawing.Point(12, 292);
             this.parameterPanel.Name = "parameterPanel";
-            this.parameterPanel.Size = new System.Drawing.Size(217, 102);
+            this.parameterPanel.Size = new System.Drawing.Size(217, 206);
             this.parameterPanel.TabIndex = 6;
             // 
             // btnEngageService
             // 
             this.btnEngageService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEngageService.Location = new System.Drawing.Point(12, 390);
+            this.btnEngageService.Location = new System.Drawing.Point(12, 512);
             this.btnEngageService.Name = "btnEngageService";
             this.btnEngageService.Size = new System.Drawing.Size(217, 23);
             this.btnEngageService.TabIndex = 7;
@@ -112,7 +113,7 @@
             // 
             this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResult.Location = new System.Drawing.Point(241, 274);
+            this.txtResult.Location = new System.Drawing.Point(241, 396);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -126,33 +127,40 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvResults.Location = new System.Drawing.Point(241, 13);
             this.tvResults.Name = "tvResults";
-            this.tvResults.Size = new System.Drawing.Size(598, 255);
+            this.tvResults.Size = new System.Drawing.Size(598, 377);
             this.tvResults.TabIndex = 11;
             // 
             // methodDescriptionPanel
             // 
-            this.methodDescriptionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.methodDescriptionPanel.Location = new System.Drawing.Point(12, 201);
+            this.methodDescriptionPanel.Location = new System.Drawing.Point(13, 227);
             this.methodDescriptionPanel.Name = "methodDescriptionPanel";
             this.methodDescriptionPanel.Size = new System.Drawing.Size(217, 59);
             this.methodDescriptionPanel.TabIndex = 7;
             // 
             // serviceDescriptionPanel
             // 
-            this.serviceDescriptionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.serviceDescriptionPanel.Location = new System.Drawing.Point(12, 96);
+            this.serviceDescriptionPanel.Location = new System.Drawing.Point(13, 122);
             this.serviceDescriptionPanel.Name = "serviceDescriptionPanel";
             this.serviceDescriptionPanel.Size = new System.Drawing.Size(217, 59);
             this.serviceDescriptionPanel.TabIndex = 8;
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(16, 13);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(213, 23);
+            this.btnLoad.TabIndex = 12;
+            this.btnLoad.Text = "Load Config";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(851, 425);
+            this.ClientSize = new System.Drawing.Size(851, 547);
+            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.serviceDescriptionPanel);
             this.Controls.Add(this.methodDescriptionPanel);
             this.Controls.Add(this.tvResults);
@@ -185,5 +193,6 @@
         private System.Windows.Forms.TreeView tvResults;
         private System.Windows.Forms.FlowLayoutPanel methodDescriptionPanel;
         private System.Windows.Forms.FlowLayoutPanel serviceDescriptionPanel;
+        private System.Windows.Forms.Button btnLoad;
     }
 }
